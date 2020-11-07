@@ -11,13 +11,13 @@ export default function Header(){
                 <Link href="/">Home</Link>
             </li>
             <li style={theme.header_buttons}>
-                <Link href="/Heroes">Heroes</Link>
+                <Link href="/Heroes/heroes">Heroes</Link>
             </li>
             <li style={theme.header_buttons}>
-                <Link href="/Gear">Gear</Link>
+                <Link href="/Gear/gear">Gear</Link>
             </li>
             <li style={theme.header_buttons}>
-                <Link href="/DamageCalc">Damage Calculator</Link>
+                <Link href="/DamageCalc/damagecalc">Damage Calculator</Link>
             </li>
         </ul>
     </Box>

@@ -1,8 +1,10 @@
+import colors from './colors'
+
 export default {
     header: {
         padding: '20px 0px 20px 10px',
-        background: 'black',
-        color: 'white',
+        background: colors.primary,
+        color: colors.text,
     },
     header_layout: {
         listStyleType: 'none',
@@ -11,11 +13,17 @@ export default {
         padding: '5px 0px 5px 0px',
     },
     header_buttons: {
+        margin: [1, 2],
+        fontSize: [2, 3, 4],
+        background: colors.test,
         display: 'inline',
         textDecoration: 'none',
-        padding: '10px',
-        fontSize: '15px',
+        whiteSpace: 'nowrap',
+        overflow: 'hidden',
         fontWeight: 'bold' as 'bold',
+        ':hover': {
+            color: colors.test,
+        },
     },
     buttons: {
         colors: {

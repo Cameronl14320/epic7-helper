@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, Text } from 'rebass'
-import gearStyle from './gearstyle'
+import gearStyle from './gearStyle'
 
 export default function Gear() {
     return (

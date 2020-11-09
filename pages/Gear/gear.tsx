@@ -1,7 +1,8 @@
 import React from 'react'
 import { Box, Text, Button } from 'rebass'
-import Slider from 'rc-slider';
-import 'rc-slider/assets/index.css';
+import {Label} from '@rebass/forms'
+import Slider from 'rc-slider'
+import 'rc-slider/assets/index.css'
 import theme from '../../styles/theme'
 
 
@@ -17,20 +18,18 @@ const gearStyle = {
         display: 'grid',
         color: 'black',
         background: theme.colors.test,
-        width: ['90vw', '80vw', '45vw'],
+        width: ['90vw', '80vw', '35vw'],
         
         firstRow: {
-            display: 'flex',
-            columnGap: '0px',
             gridRow: '1',
             margin: '15px',
             whiteSpace: 'nowrap',
             overflow: 'hidden',
-
+            justifyContent: 'center',
+            
             rarityContainer: {
-                display: 'inline-flex',
-                gridRow: '1',
-                gridColumn: '1',
+                display: 'flex',
+                justifyContent: 'center',
                 rarityIcon: {
                     width: ['5em', '6em', '7em'],
                     height: ['5em', '6em', '7em'],
@@ -38,17 +37,14 @@ const gearStyle = {
             },
 
             gearText: {
-                marginLeft: 2,
-                display: 'inline',
-                gridRow: '1',
-                gridColumn: '2',
+                display: 'block',
+                textAlign: 'center',
                 color: 'black',
                 fontSize: [5, 6],
             }
         },
 
         secondRow: {
-            gridColumn: '1',
             gridRow: '2',
             margin: '15px',
         }
@@ -65,7 +61,7 @@ export default function Gear() {
                         <Button className="rarityIcon" sx={gearStyle.grid.firstRow.rarityContainer.rarityIcon}/>
                     </Box>
                     <Box className="gearText" sx={gearStyle.grid.firstRow.gearText}>
-                        insert rarity here 123123
+                        Mythic
                     </Box>
                 </Box>
                 
@@ -79,6 +75,17 @@ export default function Gear() {
                             dotStyle={{borderColor: 'black'}}
                             activeDotStyle={{borderColor: 'blue'}}
                         />
+                        <Box sx={{
+                            display: 'flex',
+                            justifyContent: 'space-between'
+                        }}>
+                            <Text>0</Text>
+                            <Text>3</Text>
+                            <Text>6</Text>
+                            <Text>9</Text>
+                            <Text>12</Text>
+                            <Text>15</Text>
+                        </Box>
                     </Box>
                 </Box>
             </Box>

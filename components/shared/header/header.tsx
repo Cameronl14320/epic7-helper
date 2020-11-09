@@ -13,7 +13,7 @@ const headerStyle = {
         listStyleType: 'none',
         overflow: 'hidden',
         margin: 0,
-        padding: '5px 0px 5px 0px',
+        py: '5px',
     },
     header_buttons: {
         background: colors.test,

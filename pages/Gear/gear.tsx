@@ -1,58 +1,85 @@
 import React from 'react'
-import { Box, Text } from 'rebass'
-import gearStyle from './gearStyle'
+import { Box, Text, Button } from 'rebass'
+import Slider from 'rc-slider';
+import 'rc-slider/assets/index.css';
+import theme from '../../styles/theme'
+
+
+const gearStyle = {
+    wrapper: {
+        breakpoints: theme.breakpoints,
+        background: 'white',
+        display: 'flex',
+        justifyContent: 'center',
+        paddingTop: '10px',
+    },
+    grid: {
+        display: 'grid',
+        color: 'black',
+        background: theme.colors.test,
+        width: ['90vw', '80vw', '45vw'],
+        
+        firstRow: {
+            display: 'flex',
+            columnGap: '0px',
+            gridRow: '1',
+            margin: '15px',
+            whiteSpace: 'nowrap',
+            overflow: 'hidden',
+
+            rarityContainer: {
+                display: 'inline-flex',
+                gridRow: '1',
+                gridColumn: '1',
+                rarityIcon: {
+                    width: ['5em', '6em', '7em'],
+                    height: ['5em', '6em', '7em'],
+                },
+            },
+
+            gearText: {
+                marginLeft: 2,
+                display: 'inline',
+                gridRow: '1',
+                gridColumn: '2',
+                color: 'black',
+                fontSize: [5, 6],
+            }
+        },
+
+        secondRow: {
+            gridColumn: '1',
+            gridRow: '2',
+            margin: '15px',
+        }
+    },
+}
 
 export default function Gear() {
     return (
-        <Box className="gearWrapper" sx={{
-            background: 'white',
-            display: 'flex',
-            justifyContent: 'center',
-            paddingTop: '10px',
-        }}>
-            <Box className="gearGrid" sx={{
-                display: 'grid',
-                color: 'black',
-                background: gearStyle.colors.test,
-                width: '500px',
-            }}>
-                <Box className="gearFirstRow" sx={{
-                    display: 'inline-grid',
-                    columnGap: '0px',
-                    gridRow: '1',
-                    margin: '15px 15px 15px 15px',
-                }}>
-                    <Box className="gearRarity" style={{
-                        display: 'flex',
-                        gridRow: '1',
-                        gridColumn: '1',
-                        background: 'blue',
-                        position: 'relative',
-                    }}
-                    >
+        <Box sx={gearStyle.wrapper}>
+            <Box sx={gearStyle.grid}>
+
+                <Box sx={gearStyle.grid.firstRow}>
+                    <Box className="gearRarity" style={gearStyle.grid.firstRow.rarityContainer}>
+                        <Button className="rarityIcon" sx={gearStyle.grid.firstRow.rarityContainer.rarityIcon}/>
                     </Box>
-                    <Box className="gearText" sx={{
-                        width: 'auto',
-                        gridRow: '1',
-                        gridColumn: '2',
-                        color: 'black',
-                        fontSize: [1, 2, 3, 4],
-                        position: 'relative',
-                    }}>
-                        hello
+                    <Box className="gearText" sx={gearStyle.grid.firstRow.gearText}>
+                        insert rarity here 123123
                     </Box>
                 </Box>
-                <Box style={{
-                    gridColumn: '1',
-                    gridRow: '2',
-                }}>
-                    Two
-                </Box>
-                <Box style={{
-                    gridColumn: '1',
-                    gridRow: '3',
-                }}>
-                    Three
+                
+                <Box style={gearStyle.grid.secondRow}>
+                    <Box>
+                        <Slider 
+                            min={0}
+                            max={15}
+                            step={3}
+                            dots
+                            dotStyle={{borderColor: 'black'}}
+                            activeDotStyle={{borderColor: 'blue'}}
+                        />
+                    </Box>
                 </Box>
             </Box>
         </Box>

@@ -1,6 +1,5 @@
 import React from 'react'
 import { Box, Text, Button } from 'rebass'
-import {Label} from '@rebass/forms'
 import Slider from 'rc-slider'
 import 'rc-slider/assets/index.css'
 import theme from '../../styles/theme'

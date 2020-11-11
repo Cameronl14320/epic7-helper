@@ -1,8 +1,7 @@
 import React from 'react'
 import { Box, Text, Button } from 'rebass'
-import Slider from 'rc-slider'
-import 'rc-slider/assets/index.css'
 import theme from '../../styles/theme'
+import DotSlider from '../../components/shared/header/DotSlider'
 
 
 const gearStyle = {
@@ -46,7 +45,12 @@ const gearStyle = {
         secondRow: {
             gridRow: '2',
             margin: '15px',
-        }
+        },
+
+        thirdRow: {
+            gridRow: '3',
+            margin: '15px',
+        },
     },
 }
 
@@ -66,14 +70,7 @@ export default function Gear() {
                 
                 <Box style={gearStyle.grid.secondRow}>
                     <Box>
-                        <Slider 
-                            min={0}
-                            max={15}
-                            step={3}
-                            dots
-                            dotStyle={{borderColor: 'black'}}
-                            activeDotStyle={{borderColor: 'blue'}}
-                        />
+                        <DotSlider min={0} max={15} step={3}/>
                         <Box sx={{
                             display: 'flex',
                             justifyContent: 'space-between'
@@ -86,6 +83,10 @@ export default function Gear() {
                             <Text>15</Text>
                         </Box>
                     </Box>
+                </Box>
+
+                <Box sx={gearStyle.grid.thirdRow}>
+                    test
                 </Box>
             </Box>
         </Box>

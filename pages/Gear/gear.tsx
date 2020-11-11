@@ -1,8 +1,7 @@
 import React from 'react'
 import { Box, Text, Button } from 'rebass'
 import theme from '../../styles/theme'
-import DotSlider from '../../components/shared/header/DotSlider'
-
+import DotSlider from '../../components/shared/slider/DotSlider'
 
 const gearStyle = {
     wrapper: {

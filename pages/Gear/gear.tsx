@@ -3,6 +3,8 @@ import { Box, Text, Button } from 'rebass'
 import theme from '../../styles/theme'
 import DotSlider from '../../components/shared/slider/DotSlider'
 
+var rarity = 3;
+
 const gearStyle = {
     wrapper: {
         breakpoints: theme.breakpoints,
@@ -28,8 +30,13 @@ const gearStyle = {
                 display: 'flex',
                 justifyContent: 'center',
                 rarityIcon: {
-                    width: ['5em', '6em', '7em'],
-                    height: ['5em', '6em', '7em'],
+                    width: ['6em', '8em', '10em'],
+                    height: ['6em', '8em', '10em'],
+                    visibility: 'hidden',
+                },
+                rarityChanger: {
+                    width: ['3em', '4em', '5em'],
+                    height: ['3em', '4em', '5em'],
                 },
             },
 
@@ -53,6 +60,10 @@ const gearStyle = {
     },
 }
 
+function changeRarity() {
+
+}
+
 export default function Gear() {
     return (
         <Box sx={gearStyle.wrapper}>
@@ -60,7 +71,13 @@ export default function Gear() {
 
                 <Box sx={gearStyle.grid.firstRow}>
                     <Box className="gearRarity" style={gearStyle.grid.firstRow.rarityContainer}>
-                        <Button className="rarityIcon" sx={gearStyle.grid.firstRow.rarityContainer.rarityIcon}/>
+                        <Button className="rarityIcon" sx={gearStyle.grid.firstRow.rarityContainer.rarityIcon} onClick={() => changeRarity()}>
+                            <Box sx={{
+                                color: 'black',
+                            }}>
+                                grid
+                            </Box>
+                        </Button>
                     </Box>
                     <Box className="gearText" sx={gearStyle.grid.firstRow.gearText}>
                         Mythic

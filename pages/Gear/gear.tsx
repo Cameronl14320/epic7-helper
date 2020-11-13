@@ -2,8 +2,13 @@ import React from 'react'
 import { Box, Text, Button } from 'rebass'
 import theme from '../../styles/theme'
 import DotSlider from '../../components/shared/slider/DotSlider'
+import substats from '../../components/shared/game/substats'
 
 var rarity = 3;
+var firstStat = 0;
+var secondStat = 1;
+var thirdStat = 2;
+var fourthStat = 3;
 
 const gearStyle = {
     wrapper: {
@@ -56,6 +61,11 @@ const gearStyle = {
         thirdRow: {
             gridRow: '3',
             margin: '15px',
+            justifyContent: 'center',
+            textAlign: 'center',
+            stat: {
+
+            }
         },
     },
 }
@@ -102,7 +112,18 @@ export default function Gear() {
                 </Box>
 
                 <Box sx={gearStyle.grid.thirdRow}>
-                    test
+                    <Box sx={gearStyle.grid.thirdRow.stat}>
+                        First stat
+                    </Box>
+                    <Box sx={gearStyle.grid.thirdRow.stat}>
+                        Second stat
+                    </Box>
+                    <Box sx={gearStyle.grid.thirdRow.stat}>
+                        Third stat
+                    </Box>
+                    <Box sx={gearStyle.grid.thirdRow.stat}>
+                        Fourth stat
+                    </Box>
                 </Box>
             </Box>
         </Box>

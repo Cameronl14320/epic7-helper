@@ -2,28 +2,26 @@ import { Component } from "react";
 
 import { Box } from 'rebass'
 
-export default class gearSub extends Component {
-    description : string;
-
-    constructor(props) {
-        super(props)
-        this.description = props.description
+const subStyle = {
+    style: {
+        gridRow: 1,
+        padding: '0px 5px 0px 5px',
     }
+}
 
-    render() {
-        return (
-            <>
-                <Box sx={{
-                    display: 'inline-grid',
-                }}>
-                    <Box>
-                        {this.description}
-                    </Box>
-                    <Box>
-                        Percentage
-                    </Box>
+export default function GearSub() {
+    return (
+        <>
+            <Box sx={{
+                display: 'inline-grid',
+            }}>
+                <Box style={subStyle.style}>
+                    One
                 </Box>
-            </>
-        )
-    }
+                <Box style={subStyle.style}>
+                    Two
+                </Box>
+            </Box>
+        </>
+    )
 }

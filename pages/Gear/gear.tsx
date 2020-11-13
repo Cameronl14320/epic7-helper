@@ -3,6 +3,8 @@ import { Box, Text, Button } from 'rebass'
 import theme from '../../styles/theme'
 import DotSlider from '../../components/shared/slider/DotSlider'
 import substats from '../../components/shared/game/substats'
+import GearSub from '../../components/shared/stats/GearSub'
+
 
 var rarity = 3;
 var firstStat = 0;
@@ -113,16 +115,16 @@ export default function Gear() {
 
                 <Box sx={gearStyle.grid.thirdRow}>
                     <Box sx={gearStyle.grid.thirdRow.stat}>
-                        First stat
+                        <GearSub/>
                     </Box>
                     <Box sx={gearStyle.grid.thirdRow.stat}>
-                        Second stat
+                        <GearSub/>
                     </Box>
                     <Box sx={gearStyle.grid.thirdRow.stat}>
-                        Third stat
+                        <GearSub/>
                     </Box>
                     <Box sx={gearStyle.grid.thirdRow.stat}>
-                        Fourth stat
+                        <GearSub/>
                     </Box>
                 </Box>
             </Box>

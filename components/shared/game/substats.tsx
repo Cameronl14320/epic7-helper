@@ -1,22 +1,26 @@
+import { SxProps } from "rebass";
+import { Style } from "util";
+
 export default {
     critpercent: {
-        description: "Crit %",
+        name: "Crit %",
         min: 4,
         max: 8,
     },
     critdamage: {
-        description: "Crit Dmg %",
+        name: "Crit Dmg %",
         min: 4,
         max: 8,
     },
     atkpercent: {
-        description: "Attack %",
+        name: "Attack %",
         min: 4,
         max: 8,
     },
     healthpercent: {
-        description: "Health %",
+        name: "Health %",
         min: 4,
         max: 8,
-    }
+    },
+
 }

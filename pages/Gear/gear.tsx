@@ -12,6 +12,8 @@ var secondStat = 1;
 var thirdStat = 2;
 var fourthStat = 3;
 
+
+
 const gearStyle = {
     wrapper: {
         breakpoints: theme.breakpoints,
@@ -77,6 +79,7 @@ function changeRarity() {
 }
 
 export default function Gear() {
+    const firstStatRow = new GearSub({name:"hello"});
     return (
         <Box sx={gearStyle.wrapper}>
             <Box sx={gearStyle.grid}>
@@ -115,16 +118,7 @@ export default function Gear() {
 
                 <Box sx={gearStyle.grid.thirdRow}>
                     <Box sx={gearStyle.grid.thirdRow.stat}>
-                        <GearSub/>
-                    </Box>
-                    <Box sx={gearStyle.grid.thirdRow.stat}>
-                        <GearSub/>
-                    </Box>
-                    <Box sx={gearStyle.grid.thirdRow.stat}>
-                        <GearSub/>
-                    </Box>
-                    <Box sx={gearStyle.grid.thirdRow.stat}>
-                        <GearSub/>
+                        <GearSub {... {name:"teheer"}}/>
                     </Box>
                 </Box>
             </Box>

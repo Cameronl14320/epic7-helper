@@ -121,6 +121,15 @@ export default function Gear() {
                     <Box sx={gearStyle.grid.thirdRow.stat}>
                         <GearSub {... subArray[firstStat]}/>
                     </Box>
+                    <Box sx={gearStyle.grid.thirdRow.stat}>
+                        <GearSub {... subArray[secondStat]}/>
+                    </Box>
+                    <Box sx={gearStyle.grid.thirdRow.stat}>
+                        <GearSub {... subArray[thirdStat]}/>
+                    </Box>
+                    <Box sx={gearStyle.grid.thirdRow.stat}>
+                        <GearSub {... subArray[fourthStat]}/>
+                    </Box>
                 </Box>
             </Box>
         </Box>

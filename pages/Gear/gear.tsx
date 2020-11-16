@@ -5,6 +5,7 @@ import DotSlider from '../../components/shared/slider/DotSlider'
 import substats from '../../components/shared/game/substats'
 import GearSub from '../../components/shared/stats/GearSub'
 import { Style } from 'util'
+import colors from '../../styles/colors'
 
 
 var rarity = 3;
@@ -40,13 +41,21 @@ const gearStyle = {
                 display: 'flex',
                 justifyContent: 'center',
                 rarityIcon: {
-                    width: ['6em', '8em', '10em'],
-                    height: ['6em', '8em', '10em'],
-                    visibility: 'hidden',
+                    width: ['6em', '9em', '12em'],
+                    height: ['6em', '9em', '12em'],
+                    background: colors.secondary,
+                    padding: 0,
                 },
                 rarityChanger: {
                     width: ['3em', '4em', '5em'],
                     height: ['3em', '4em', '5em'],
+                },
+                enhanceIcon: {
+                    width: ['2em', '3em', '4em'],
+                    height: ['2em', '3em', '4em'],
+                    background: 'black',
+                    position: 'absolute',
+                    marginLeft: ['4em', '6em', '8em'],
                 },
             },
 
@@ -87,13 +96,19 @@ export default function Gear() {
 
                 <Box sx={gearStyle.grid.firstRow}>
                     <Box className="gearRarity" style={gearStyle.grid.firstRow.rarityContainer}>
-                        <Button className="rarityIcon" sx={gearStyle.grid.firstRow.rarityContainer.rarityIcon} onClick={() => changeRarity()}>
-                            <Box sx={{
-                                color: 'black',
-                            }}>
-                                grid
+                        <Box sx={{
+                            display: 'flex',
+                        }}>
+                            <Box className="rarityIcon" sx={gearStyle.grid.firstRow.rarityContainer.rarityIcon} onClick={() => changeRarity()}>
+                                <Box sx={{
+                                    color: 'black',
+                                }}>
+                                    grid
+                                </Box>
                             </Box>
-                        </Button>
+                            <Box className="enhanceLevel" sx={gearStyle.grid.firstRow.rarityContainer.enhanceIcon}>
+                            </Box>
+                        </Box>
                     </Box>
                     <Box className="gearText" sx={gearStyle.grid.firstRow.gearText}>
                         Mythic
@@ -103,17 +118,6 @@ export default function Gear() {
                 <Box style={gearStyle.grid.secondRow}>
                     <Box>
                         <DotSlider min={0} max={15} step={3}/>
-                        <Box sx={{
-                            display: 'flex',
-                            justifyContent: 'space-between'
-                        }}>
-                            <Text>0</Text>
-                            <Text>3</Text>
-                            <Text>6</Text>
-                            <Text>9</Text>
-                            <Text>12</Text>
-                            <Text>15</Text>
-                        </Box>
                     </Box>
                 </Box>
 

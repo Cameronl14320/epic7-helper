@@ -2,6 +2,7 @@ import { SxProps } from "rebass";
 import { Style } from "util";
 
 export default {
+
     critpercent: {
         name: "Crit %",
         min: 4,

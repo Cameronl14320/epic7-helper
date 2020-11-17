@@ -10,24 +10,26 @@ const subStyle = {
     }
 }
 
-export default class GearSub extends Component<{}, {stat : statObject}> {
+export default class GearSub extends Component<{}, {id : string, stat : statObject}> {
 
-    stat : statObject;
+    stat : statObject = new statObject("null", 0, 0);
+    id : string;
 
     constructor(props) {
         super(props);
+        this.id = props.id;
         this.stat = props.stat;
     }
 
     changeStat() {
         var totalSub = subArray.length;
-        var id : number = subArray.indexOf(this.stat);
-        if (id >= totalSub) {
-            id = 0;
+        var index : number = subArray.indexOf(this.stat) + 1;
+        if (index >= totalSub) {
+            index = 0;
         }
-        this.stat = subArray[id];
+        this.stat = subArray[index];
 
-        document.getElementById('Stat').textContent = this.stat.name;
+        document.getElementById(this.id).textContent = this.stat.name;
     }
 
     render() {
@@ -36,7 +38,7 @@ export default class GearSub extends Component<{}, {stat : statObject}> {
                 <Box sx={{
                     display: 'inline-grid',
                 }}>
-                    <Box id="Stat" sx={subStyle.style} onClick={() => this.changeStat()}>
+                    <Box id={this.id} sx={subStyle.style} onClick={() => this.changeStat()}>
                         {this.stat.name}
                     </Box>
                     <Box id="Amount" sx={subStyle.style}>

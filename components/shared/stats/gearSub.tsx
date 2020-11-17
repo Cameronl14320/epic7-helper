@@ -1,4 +1,5 @@
 import { Component } from "react";
+import ReactDOM from "react-dom";
 
 import { Box, SxStyleProp } from 'rebass'
 import { subArray } from '../game/subArray'
@@ -26,7 +27,21 @@ export default class GearSub extends Component<{}, {id : number, name : string, 
     }
 
     changeStat() {
+        var totalSub = subArray.length;
+        this.id++;
+        if (this.id >= totalSub) {
+            this.id = 0;
+        }
 
+        /*
+        var props = subArray[this.id];
+        this.name = props.name;
+        this.min = props.min;
+        this.max = props.max;
+
+        */
+
+        document.getElementById('Stat').textContent;
     }
 
     render() {
@@ -35,10 +50,10 @@ export default class GearSub extends Component<{}, {id : number, name : string, 
                 <Box sx={{
                     display: 'inline-grid',
                 }}>
-                    <Box className="Stat" style={subStyle.style}>
+                    <Box id="Stat" sx={subStyle.style}>
                         {this.name}
                     </Box>
-                    <Box className="Amount" style={subStyle.style}>
+                    <Box id="Amount" sx={subStyle.style}>
                         Two
                     </Box>
                 </Box>

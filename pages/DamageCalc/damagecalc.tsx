@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, Text } from 'rebass'
-import subArray from '../../components/shared/game/subArray'
+import {subArray, createArray} from '../../components/shared/game/subArray'
 
 export default function DamageCalc() {
     return (
@@ -12,7 +12,7 @@ export default function DamageCalc() {
                 height: '100px',
                 background: 'blue',
             }}
-            onClick={() => subArray()}
+            onClick={() => createArray()}
             ></Box>
         </Box>
     )

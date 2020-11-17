@@ -1,8 +1,7 @@
 import { Component } from "react";
-import ReactDOM from "react-dom";
-
 import { Box, SxStyleProp } from 'rebass'
-import subArray from '../game/subArray'
+import statObject from "../game/statObject";
+import { subArray } from '../game/subArray'
 
 const subStyle = {
     style: {
@@ -11,37 +10,24 @@ const subStyle = {
     }
 }
 
-export default class GearSub extends Component<{}, {id : number, name : string, min : number, max : number}> {
+export default class GearSub extends Component<{}, {stat : statObject}> {
 
-    id : number;
-    name: string;
-    min: number;
-    max: number;
+    stat : statObject;
 
     constructor(props) {
         super(props);
-        this.id = props.id;
-        this.name = props.name;
-        this.min = props.min;
-        this.max = props.max;
+        this.stat = props.stat;
     }
 
     changeStat() {
         var totalSub = subArray.length;
-        this.id++;
-        if (this.id >= totalSub) {
-            this.id = 0;
+        var id : number = subArray.indexOf(this.stat);
+        if (id >= totalSub) {
+            id = 0;
         }
+        this.stat = subArray[id];
 
-        /*
-        var props = subArray[this.id];
-        this.name = props.name;
-        this.min = props.min;
-        this.max = props.max;
-
-        */
-
-        document.getElementById('Stat').textContent;
+        document.getElementById('Stat').textContent = this.stat.name;
     }
 
     render() {
@@ -50,8 +36,8 @@ export default class GearSub extends Component<{}, {id : number, name : string, 
                 <Box sx={{
                     display: 'inline-grid',
                 }}>
-                    <Box id="Stat" sx={subStyle.style}>
-                        {this.name}
+                    <Box id="Stat" sx={subStyle.style} onClick={() => this.changeStat()}>
+                        {this.stat.name}
                     </Box>
                     <Box id="Amount" sx={subStyle.style}>
                         Two

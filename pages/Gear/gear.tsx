@@ -2,7 +2,7 @@ import React from 'react'
 import { Box, Text, Button, SxStyleProp } from 'rebass'
 import theme from '../../styles/theme'
 import DotSlider from '../../components/shared/slider/DotSlider'
-import subArray from '../../components/shared/game/subArray'
+import { subArray } from '../../components/shared/game/subArray'
 import GearSub from '../../components/shared/stats/GearSub'
 import { Style } from 'util'
 import colors from '../../styles/colors'
@@ -98,7 +98,6 @@ function changeStat(currentStat : number) {
 }
 
 export default function Gear() {
-    const firstStatRow = new GearSub({name:"hello"});
     return (
         <Box sx={gearStyle.wrapper}>
             <Box sx={gearStyle.grid}>

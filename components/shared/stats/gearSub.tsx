@@ -1,6 +1,6 @@
 import { Component } from "react";
 
-import { Box } from 'rebass'
+import { Box, SxStyleProp } from 'rebass'
 
 const subStyle = {
     style: {
@@ -9,17 +9,26 @@ const subStyle = {
     }
 }
 
-export default class GearSub extends Component<{}, {name : string, min : number, max : number}> {
+export default class GearSub extends Component<{}, {id : number, name : string, min : number, max : number, substats : Array<SxStyleProp>}> {
 
+    id : number;
     name: string;
     min: number;
     max: number;
+    substats : Array<SxStyleProp>;
 
     constructor(props) {
         super(props);
+        this.id = props.id;
         this.name = props.name;
         this.min = props.min;
         this.max = props.max;
+        this.substats = props.substats;
+    }
+
+    changeStat() {
+        var totalStats = this.substats.length;
+
     }
 
     render() {
@@ -28,10 +37,10 @@ export default class GearSub extends Component<{}, {name : string, min : number,
                 <Box sx={{
                     display: 'inline-grid',
                 }}>
-                    <Box style={subStyle.style}>
+                    <Box className="Stat" style={subStyle.style}>
                         {this.name}
                     </Box>
-                    <Box style={subStyle.style}>
+                    <Box className="Amount" style={subStyle.style}>
                         Two
                     </Box>
                 </Box>

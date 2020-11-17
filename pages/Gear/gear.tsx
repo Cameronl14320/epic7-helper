@@ -88,6 +88,16 @@ function changeRarity() {
 
 }
 
+function changeStat(currentStat : number) {
+    var totalStats = subArray.length;
+
+    currentStat++;
+    if (currentStat >= totalStats) {
+        currentStat = 0;
+    }
+    return currentStat;
+}
+
 export default function Gear() {
     const firstStatRow = new GearSub({name:"hello"});
     return (

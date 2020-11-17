@@ -1,0 +1,24 @@
+{
+    "substats": [    
+        {
+            "name": "Crit %",
+            "min": 4,
+            "max": 8
+        },
+        {
+            "name": "Crit Damage %",
+            "min": 4,
+            "max": 8
+        },
+        {
+            "name": "Attack %",
+            "min": 4,
+            "max": 8
+        },
+        {
+            "name": "Health %",
+            "min": 4,
+            "max": 8
+        }
+    ]
+}

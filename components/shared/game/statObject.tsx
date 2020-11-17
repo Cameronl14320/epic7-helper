@@ -5,7 +5,9 @@ export default class statObject {
     min : number;
     max : number;
 
-    constructor() {
-
+    constructor(name : string, min : number, max : number) {
+        this.name = name;
+        this.min = min;
+        this.max = max;
     }
 }

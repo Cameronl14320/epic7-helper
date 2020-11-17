@@ -2,7 +2,7 @@ import { Component } from "react";
 import ReactDOM from "react-dom";
 
 import { Box, SxStyleProp } from 'rebass'
-import { subArray } from '../game/subArray'
+import subArray from '../game/subArray'
 
 const subStyle = {
     style: {

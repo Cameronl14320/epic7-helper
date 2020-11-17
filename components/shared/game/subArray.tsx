@@ -1,13 +1,19 @@
 import { SxStyleProp } from 'rebass'
-import substats from './substatsjson'
+import substats from './substats.json'
 import statObject from './statObject'
 
-export function subArray():Array<statObject> {
+export default function subArray():Array<statObject> {
     const array : Array<statObject> = new Array<statObject>();
-    array.push(new statObject(substats.critpercent.name, substats.critpercent.min, substats.critpercent.max));
-    array.push(new statObject(substats.critdamage.name, substats.critdamage.min, substats.critdamage.max));
-    array.push(new statObject(substats.atkpercent.name, substats.atkpercent.min, substats.atkpercent.max));
-    array.push(new statObject(substats.healthpercent.name, substats.healthpercent.min, substats.healthpercent.max));
-    
+    const jsonArray : any[] = [];
+    Object.keys(substats.substats).forEach(key => jsonArray.push({name: substats.substats[key].name, min: substats.substats[key].min, max: substats.substats[key].max}))
+
+    console.log(jsonArray.length);
+    jsonArray.forEach(element => {
+        var name : string = element.name;
+        var min : number = element.min;
+        var max : number = element.max;
+        console.log(name + " : " + min + " : " + max);
+        array.push(new statObject(name, min, max));
+    });
     return;
 }

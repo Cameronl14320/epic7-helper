@@ -2,7 +2,7 @@ import React from 'react'
 import { Box, Text, Button, SxStyleProp } from 'rebass'
 import theme from '../../styles/theme'
 import DotSlider from '../../components/shared/slider/DotSlider'
-import substats from '../../components/shared/game/substats'
+import { subArray } from '../../components/shared/game/subArray'
 import GearSub from '../../components/shared/stats/GearSub'
 import { Style } from 'util'
 import colors from '../../styles/colors'
@@ -14,7 +14,6 @@ var secondStat = 1;
 var thirdStat = 2;
 var fourthStat = 3;
 
-const subArray : Array<SxStyleProp> = [ substats.critpercent, substats.critdamage, substats.atkpercent, substats.healthpercent]
 
 const gearStyle = {
     wrapper: {

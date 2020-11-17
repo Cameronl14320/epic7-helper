@@ -1,6 +1,7 @@
 import { Component } from "react";
 
 import { Box, SxStyleProp } from 'rebass'
+import { subArray } from '../game/subArray'
 
 const subStyle = {
     style: {
@@ -9,13 +10,12 @@ const subStyle = {
     }
 }
 
-export default class GearSub extends Component<{}, {id : number, name : string, min : number, max : number, substats : Array<SxStyleProp>}> {
+export default class GearSub extends Component<{}, {id : number, name : string, min : number, max : number}> {
 
     id : number;
     name: string;
     min: number;
     max: number;
-    substats : Array<SxStyleProp>;
 
     constructor(props) {
         super(props);
@@ -23,11 +23,9 @@ export default class GearSub extends Component<{}, {id : number, name : string, 
         this.name = props.name;
         this.min = props.min;
         this.max = props.max;
-        this.substats = props.substats;
     }
 
     changeStat() {
-        var totalStats = this.substats.length;
 
     }
 

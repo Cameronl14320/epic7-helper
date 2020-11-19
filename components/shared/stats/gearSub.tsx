@@ -47,6 +47,8 @@ export default class GearSub extends Component<{}, {id : string, stat : statObje
     }
 
     render() {
+        var selectStat = subArray.map(stat => <div> {stat.name} </div>)
+
         return (
             <Box style={{
                 MozUserSelect: "none",
@@ -68,7 +70,7 @@ export default class GearSub extends Component<{}, {id : string, stat : statObje
                     visibility: 'hidden',
                     display: 'none',
                 }}>
-                    {this.id + "Change"}
+                    {selectStat}
                 </Box>
             </Box>
         )

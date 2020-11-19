@@ -10,31 +10,7 @@ const subStyle = {
     }
 }
 
-function createSelect() {
-    let selectStat = [];
-    let maxPerColumn = 5;
-    let currentColumn = 1;
-    let currentRow = 1;
-    for (let i = 0; i < subArray.length; i++) {
-        selectStat.push(
-            <Box sx={{
-                gridColumn: currentColumn,
-                gridRow: currentRow,
-                margin: '5px',
-                textAlign: 'center',
-            }}>
-                {subArray[i].name}
-            </Box>
-        )
-        currentColumn++;
-        if (currentColumn > maxPerColumn) {
-            currentColumn = 1;
-            currentRow++;
-        }
-    }
 
-    return selectStat;
-}
 
 export default class GearSub extends Component<{}, {id : string, stat : statObject}> {
 
@@ -66,8 +42,34 @@ export default class GearSub extends Component<{}, {id : string, stat : statObje
         document.getElementById(this.id).textContent = this.stat.name;
     }
 
+    createSelect() {
+        let selectStat = [];
+        let maxPerColumn = 5;
+        let currentColumn = 1;
+        let currentRow = 1;
+        for (let i = 0; i < subArray.length; i++) {
+            selectStat.push(
+                <Box sx={{
+                    gridColumn: currentColumn,
+                    gridRow: currentRow,
+                    margin: '5px',
+                    textAlign: 'center',
+                }} onClick={() => this.changeStat(i)}>
+                    {subArray[i].name}
+                </Box>
+            )
+            currentColumn++;
+            if (currentColumn > maxPerColumn) {
+                currentColumn = 1;
+                currentRow++;
+            }
+        }
+    
+        return selectStat;
+    }
+
     render() {
-        var selectStat = createSelect();
+        var selectStat = this.createSelect();
 
         return (
             <Box style={{

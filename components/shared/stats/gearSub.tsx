@@ -40,8 +40,14 @@ export default class GearSub extends Component<{}, {id : string, stat : statObje
             this.stat = subArray[index];
         }
         document.getElementById(this.id).textContent = this.stat.name;
+        this.changeVisibility();
     }
 
+    /*
+    * Might be better to create this in gear instead,
+    * Have a panel you can maximize -> click on x separate stats (Depending on rarity) to select them all in one panel rather than open up each time.
+    * This way, allows to keep track of what stats are selected
+    */
     createSelect() {
         let selectStat = [];
         let maxPerColumn = 5;

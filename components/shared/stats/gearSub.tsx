@@ -10,8 +10,6 @@ const subStyle = {
     }
 }
 
-
-
 export default class GearSub extends Component<{}, {id : string, stat : statObject}> {
 
     stat : statObject = new statObject("null", 0, 0);

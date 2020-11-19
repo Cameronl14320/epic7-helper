@@ -10,6 +10,32 @@ const subStyle = {
     }
 }
 
+function createSelect() {
+    let selectStat = [];
+    let maxPerColumn = 5;
+    let currentColumn = 1;
+    let currentRow = 1;
+    for (let i = 0; i < subArray.length; i++) {
+        selectStat.push(
+            <Box sx={{
+                gridColumn: currentColumn,
+                gridRow: currentRow,
+                margin: '5px',
+                textAlign: 'center',
+            }}>
+                {subArray[i].name}
+            </Box>
+        )
+        currentColumn++;
+        if (currentColumn > maxPerColumn) {
+            currentColumn = 1;
+            currentRow++;
+        }
+    }
+
+    return selectStat;
+}
+
 export default class GearSub extends Component<{}, {id : string, stat : statObject}> {
 
     stat : statObject = new statObject("null", 0, 0);
@@ -34,40 +60,11 @@ export default class GearSub extends Component<{}, {id : string, stat : statObje
     }
 
     changeStat() {
-        /*
-        var totalSub = subArray.length;
-        var index : number = subArray.indexOf(this.stat) + 1;
-        if (index >= totalSub) {
-            index = 0;
-        }
-        this.stat = subArray[index];
 
-        document.getElementById(this.id).textContent = this.stat.name;
-        */
     }
 
     render() {
-        let selectStat = [];
-        let maxPerColumn = 5;
-        let currentColumn = 1;
-        let currentRow = 1;
-        for (let i = 0; i < subArray.length; i++) {
-            selectStat.push(
-                <Box sx={{
-                    gridColumn: currentColumn,
-                    gridRow: currentRow,
-                    margin: '10px',
-                }}>
-                    {subArray[i].name}
-                </Box>
-            )
-            currentColumn++;
-            if (currentColumn > maxPerColumn) {
-                currentColumn = 1;
-                currentRow++;
-            }
-        }
-
+        var selectStat = createSelect();
 
         return (
             <Box style={{
@@ -89,6 +86,7 @@ export default class GearSub extends Component<{}, {id : string, stat : statObje
                 <Box id ={this.id + "Change"}sx={{
                     visibility: 'hidden',
                     display: 'none',
+                    textAlign: 'center',
                 }}>
                     {selectStat}
                 </Box>

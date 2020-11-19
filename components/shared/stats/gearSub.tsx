@@ -59,8 +59,11 @@ export default class GearSub extends Component<{}, {id : string, stat : statObje
         }
     }
 
-    changeStat() {
-
+    changeStat(index : number) {
+        if (index >= 0 && index < subArray.length) {
+            this.stat = subArray[index];
+        }
+        document.getElementById(this.id).textContent = this.stat.name;
     }
 
     render() {
@@ -87,6 +90,7 @@ export default class GearSub extends Component<{}, {id : string, stat : statObje
                     visibility: 'hidden',
                     display: 'none',
                     textAlign: 'center',
+                    background: 'lightblue',
                 }}>
                     {selectStat}
                 </Box>

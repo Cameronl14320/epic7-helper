@@ -26,7 +26,7 @@ export default class GearSub extends Component<{}, {id : string, stat : statObje
         var state = panel.style.visibility == "hidden";
         if (state) {
             panel.style.visibility = "visible";
-            panel.style.display = "block";
+            panel.style.display = "grid";
         } else {
             panel.style.visibility = "hidden";
             panel.style.display = "none";
@@ -47,7 +47,27 @@ export default class GearSub extends Component<{}, {id : string, stat : statObje
     }
 
     render() {
-        var selectStat = subArray.map(stat => <div> {stat.name} </div>)
+        let selectStat = [];
+        let maxPerColumn = 5;
+        let currentColumn = 1;
+        let currentRow = 1;
+        for (let i = 0; i < subArray.length; i++) {
+            selectStat.push(
+                <Box sx={{
+                    gridColumn: currentColumn,
+                    gridRow: currentRow,
+                    margin: '10px',
+                }}>
+                    {subArray[i].name}
+                </Box>
+            )
+            currentColumn++;
+            if (currentColumn > maxPerColumn) {
+                currentColumn = 1;
+                currentRow++;
+            }
+        }
+
 
         return (
             <Box style={{

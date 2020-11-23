@@ -3,26 +3,30 @@ import GearSub from './GearSub'
 import { subArray } from '../game/subArray'
 import { Component } from 'react';
 
-const firstStat = new GearSub({key: "firstStat", id:"firstStat", stat:subArray[0]});
-const secondStat = new GearSub({key: "secondStat", id:"secondStat", stat:subArray[1]});
-const thirdStat = new GearSub({key: "thirdStat", id:"thirdStat", stat:subArray[2]});
-const fourthStat = new GearSub({key: "fourthStat", id:"fourthStat", stat:subArray[3]});
+function subStats() : GearSub[] {
+    let subStats : GearSub[] = [];
+    for (let i = 0; i < 4; i++) {
+        subStats.push(new GearSub({key: (i + "Stat"), id: (i + "Stat"), stat:subArray[i]}))
+    }
+    return subStats;
+}
 
 export default class subContainer extends Component {
 
     rarity : number = 3;
     selectedStats : number[] = [];
+    subStats = subStats();
     
     constructor(props) {
         super(props);
     }
 
     getSelected() {
-        var newSelect : number[] = [];
-        newSelect.push(subArray.indexOf(firstStat.stat));
-        newSelect.push(subArray.indexOf(secondStat.stat));
-        newSelect.push(subArray.indexOf(thirdStat.stat));
-        newSelect.push(subArray.indexOf(fourthStat.stat));
+        var currentSelect : number[] = [];
+        for (let i = 0; i < this.rarity; i++) {
+            currentSelect.push(subArray.indexOf(subStats[i].stat));
+        }
+        return currentSelect
     }
 
     changeStat(stat : number) {
@@ -76,26 +80,21 @@ export default class subContainer extends Component {
 }
     
     render() {
-
-
         return (
             <>
                 <Box>
-                    <Box>
-                        {firstStat.render()}
-                    </Box>
-                    <Box>
-                        {secondStat.render()}
-                    </Box>
-                    <Box>
-                        {thirdStat.render()}
-                    </Box>
-                    <Box>
-                        {fourthStat.render()}
-                    </Box>
+                    {firstStat.render()}
+                    {secondStat.render()}
+                    {thirdStat.render()}
+                    {fourthStat.render()}
                 </Box>
                 <Box>
-                    Hello123
+                    <Box className="revealSelections">
+                        Reveal
+                    </Box>
+                    <Box className="selections">
+                        Selections
+                    </Box>
                 </Box>
             </>
         )

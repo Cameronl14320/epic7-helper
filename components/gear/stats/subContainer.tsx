@@ -14,6 +14,7 @@ function subStats() : GearSub[] {
 export default class subContainer extends Component {
 
     rarity : number = 3;
+    selected : number = 4;
     selectedStats : number[] = [];
     subStats = subStats();
     
@@ -80,13 +81,15 @@ export default class subContainer extends Component {
 }
     
     render() {
+        let currentStats = [];
+        for (let i = 0; i < this.selected; i++) {
+            currentStats.push(this.subStats[i].render());
+        }
+
         return (
             <>
                 <Box>
-                    {firstStat.render()}
-                    {secondStat.render()}
-                    {thirdStat.render()}
-                    {fourthStat.render()}
+                    {currentStats}
                 </Box>
                 <Box>
                     <Box className="revealSelections">

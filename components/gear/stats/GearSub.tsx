@@ -21,59 +21,18 @@ export default class GearSub extends Component<{}, {id : string, stat : statObje
         this.stat = props.stat;
     }
 
-    changeVisibility() {
-        var panel = document.getElementById(this.id + "Change");
-        var state = panel.style.visibility == "hidden";
-        if (state) {
-            panel.style.visibility = "visible";
-            panel.style.display = "grid";
-        } else {
-            panel.style.visibility = "hidden";
-            panel.style.display = "none";
-        }
-    }
-
     changeStat(index : number) {
         if (index >= 0 && index < subArray.length) {
             this.stat = subArray[index];
         }
         document.getElementById(this.id).textContent = this.stat.name;
-        this.changeVisibility();
     }
 
-    /*
-    * Might be better to create this in gear instead,
-    * Have a panel you can maximize -> click on x separate stats (Depending on rarity) to select them all in one panel rather than open up each time.
-    * This way, allows to keep track of what stats are selected
-    */
-    createSelect() {
-        let selectStat = [];
-        let maxPerColumn = 5;
-        let currentColumn = 1;
-        let currentRow = 1;
-        for (let i = 0; i < subArray.length; i++) {
-            selectStat.push(
-                <Box key={i} sx={{
-                    gridColumn: currentColumn,
-                    gridRow: currentRow,
-                    margin: '5px',
-                    textAlign: 'center',
-                }} onClick={() => this.changeStat(i)}>
-                    {subArray[i].name}
-                </Box>
-            )
-            currentColumn++;
-            if (currentColumn > maxPerColumn) {
-                currentColumn = 1;
-                currentRow++;
-            }
-        }
-    
-        return selectStat;
+    getStat() {
+        return this.stat;
     }
 
     render() {
-        var selectStat = this.createSelect();
 
         return (
             <Box style={{
@@ -85,7 +44,7 @@ export default class GearSub extends Component<{}, {id : string, stat : statObje
                     display: 'inline-grid',
                     background: 'white',
                 }}>
-                    <Box id={this.id} sx={subStyle.style} onClick={() => this.changeVisibility()}>
+                    <Box id={this.id} sx={subStyle.style}>
                         {this.stat.name}
                     </Box>
                     <Box id="Amount" sx={subStyle.style}>
@@ -98,7 +57,6 @@ export default class GearSub extends Component<{}, {id : string, stat : statObje
                     textAlign: 'center',
                     background: 'lightblue',
                 }}>
-                    {selectStat}
                 </Box>
             </Box>
         )

@@ -53,7 +53,7 @@ export default class GearSub extends Component<{}, {id : string, stat : statObje
         let currentRow = 1;
         for (let i = 0; i < subArray.length; i++) {
             selectStat.push(
-                <Box sx={{
+                <Box key={i} sx={{
                     gridColumn: currentColumn,
                     gridRow: currentRow,
                     margin: '5px',

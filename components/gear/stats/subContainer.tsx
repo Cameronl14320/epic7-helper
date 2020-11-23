@@ -3,10 +3,10 @@ import GearSub from './GearSub'
 import { subArray } from '../game/subArray'
 import { Component } from 'react';
 
-const firstStat = new GearSub({id:"firstStat", stat:subArray[0]});
-const secondStat = new GearSub({id:"secondStat", stat:subArray[1]});
-const thirdStat = new GearSub({id:"thirdStat", stat:subArray[2]});
-const fourthStat = new GearSub({id:"fourthStat", stat:subArray[3]});
+const firstStat = new GearSub({key: "firstStat", id:"firstStat", stat:subArray[0]});
+const secondStat = new GearSub({key: "secondStat", id:"secondStat", stat:subArray[1]});
+const thirdStat = new GearSub({key: "thirdStat", id:"thirdStat", stat:subArray[2]});
+const fourthStat = new GearSub({key: "fourthStat", id:"fourthStat", stat:subArray[3]});
 
 export default class subContainer extends Component {
     
@@ -16,9 +16,25 @@ export default class subContainer extends Component {
     
     render() {
         return (
-            <Box>
-                Hello
-            </Box>
+            <>
+                <Box>
+                    <Box>
+                        {firstStat.render()}
+                    </Box>
+                    <Box>
+                        {secondStat.render()}
+                    </Box>
+                    <Box>
+                        {thirdStat.render()}
+                    </Box>
+                    <Box>
+                        {fourthStat.render()}
+                    </Box>
+                </Box>
+                <Box>
+                    Hello
+                </Box>
+            </>
         )
     }
 

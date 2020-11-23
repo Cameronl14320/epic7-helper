@@ -12,24 +12,13 @@ const subStyle = {
 
 export default class GearSub extends Component<{}, {id : string, stat : statObject}> {
 
-    stat : statObject = new statObject("null", 0, 0);
+    stat : statObject;
     id : string;
 
     constructor(props) {
         super(props);
         this.id = props.id;
         this.stat = props.stat;
-    }
-
-    changeStat(index : number) {
-        if (index >= 0 && index < subArray.length) {
-            this.stat = subArray[index];
-        }
-        document.getElementById(this.id).textContent = this.stat.name;
-    }
-
-    getStat() {
-        return this.stat;
     }
 
     render() {

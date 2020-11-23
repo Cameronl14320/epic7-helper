@@ -21,7 +21,7 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx", "components/shared/game/substatsjson"
+    "**/*.tsx", "components/gear/game/substatsjson"
   ],
   "exclude": [
     "node_modules"

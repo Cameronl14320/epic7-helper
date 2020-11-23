@@ -2,8 +2,9 @@ import React from 'react'
 import { Box, Text, Button, SxStyleProp } from 'rebass'
 import theme from '../../styles/theme'
 import DotSlider from '../../components/shared/slider/DotSlider'
-import { subArray } from '../../components/shared/game/subArray'
-import GearSub from '../../components/shared/stats/GearSub'
+import { subArray } from '../../components/gear/game/subArray'
+import GearSub from '../../components/gear/stats/GearSub'
+import subContainer from '../../components/gear/stats/subContainer'
 import { Style } from 'util'
 import colors from '../../styles/colors'
 
@@ -98,6 +99,9 @@ function changeStat(currentStat : number) {
 }
 
 export default function Gear() {
+
+    const subStats = new subContainer({});
+
     return (
         <Box sx={gearStyle.wrapper}>
             <Box sx={gearStyle.grid}>
@@ -130,18 +134,7 @@ export default function Gear() {
                 </Box>
 
                 <Box sx={gearStyle.grid.thirdRow}>
-                    <Box sx={gearStyle.grid.thirdRow.stat}>
-                        <GearSub {... {id:"firstStat", stat:subArray[firstStat]}}/>
-                    </Box>
-                    <Box sx={gearStyle.grid.thirdRow.stat}>
-                        <GearSub {... {id:"secondStat", stat:subArray[secondStat]}}/>
-                    </Box>
-                    <Box sx={gearStyle.grid.thirdRow.stat}>
-                        <GearSub {... {id:"thirdStat", stat:subArray[thirdStat]}}/>
-                    </Box>
-                    <Box sx={gearStyle.grid.thirdRow.stat}>
-                        <GearSub {... {id:"fourthStat", stat:subArray[fourthStat]}}/>
-                    </Box>
+                    {subStats.render()}
                 </Box>
             </Box>
         </Box>

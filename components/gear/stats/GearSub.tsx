@@ -31,7 +31,7 @@ export default class GearSub extends Component<{}, {id : string, stat : statObje
             }}>
                 <Box sx={{
                     display: 'inline-grid',
-                    background: 'white',
+                    background: 'white',               
                 }}>
                     <Box id={this.id} sx={subStyle.style}>
                         {this.stat.name}
@@ -39,13 +39,6 @@ export default class GearSub extends Component<{}, {id : string, stat : statObje
                     <Box id="Amount" sx={subStyle.style}>
                         Two
                     </Box>
-                </Box>
-                <Box id ={this.id + "Change"}sx={{
-                    visibility: 'hidden',
-                    display: 'none',
-                    textAlign: 'center',
-                    background: 'lightblue',
-                }}>
                 </Box>
             </Box>
         )

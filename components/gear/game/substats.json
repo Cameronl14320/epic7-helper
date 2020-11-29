@@ -19,6 +19,21 @@
             "name": "Health %",
             "min": 4,
             "max": 8
+        },
+        {
+            "name": "Speed",
+            "min": 2,
+            "max": 4
+        },
+        {
+            "name": "Health",
+            "min": 40,
+            "max": 100
+        },
+        {
+            "name": "Efficiency %",
+            "min": 4,
+            "max": 10
         }
     ]
 }

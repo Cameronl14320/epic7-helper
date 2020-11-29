@@ -61,8 +61,12 @@ export default class subContainer extends Component {
             <Box key={i} sx={{
                 gridColumn: currentColumn,
                 gridRow: currentRow,
-                margin: '5px',
+                paddingX: '10px',
+                paddingY: '5px',
+                margin: '2px',
                 textAlign: 'center',
+                background: 'blue',
+                borderRadius: '2px',
                 ':checked': {
                     color: 'blue',
                 },
@@ -78,13 +82,18 @@ export default class subContainer extends Component {
     }
 
     return selectStat;
-}
+    }
+
+    revealSelect() {
+
+    }
     
     render() {
         let currentStats = [];
         for (let i = 0; i < this.selected; i++) {
             currentStats.push(this.subStats[i].render());
         }
+        let select = this.createSelect();
 
         return (
             <>
@@ -92,11 +101,16 @@ export default class subContainer extends Component {
                     {currentStats}
                 </Box>
                 <Box>
-                    <Box className="revealSelections">
+                    <Box className="revealSelections" sx={{
+                        width: '100%',
+                    }}>
                         Reveal
                     </Box>
-                    <Box className="selections">
-                        Selections
+                    <Box className="selections" sx={{
+                        display: 'inline-grid'
+
+                    }}>
+                        {select}
                     </Box>
                 </Box>
             </>

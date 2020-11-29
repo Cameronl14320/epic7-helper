@@ -74,7 +74,6 @@ const gearStyle = {
 
         thirdRow: {
             gridRow: '3',
-            margin: '15px',
             justifyContent: 'center',
             textAlign: 'center',
             stat: {

@@ -3,9 +3,7 @@ import { Box, Text, Button, SxStyleProp } from 'rebass'
 import theme from '../../styles/theme'
 import DotSlider from '../../components/shared/slider/DotSlider'
 import { subArray } from '../../components/gear/game/subArray'
-import GearSub from '../../components/gear/stats/GearSub'
 import SubContainer from '../../components/gear/stats/SubContainer'
-import { Style } from 'util'
 import colors from '../../styles/colors'
 
 var rarity = 3;

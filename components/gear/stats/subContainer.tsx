@@ -120,7 +120,7 @@ export default class subContainer extends Component {
                     <Box className="revealSelections" sx={{
                         width: '100%',
                         marginTop: '10px',
-                        height: ["5vh", "4vh", "2vh"],
+                        height: ["5vh", "5vh", "2vh"],
                         background: 'black',
                         ":hover": {
                             cursor: "pointer",

@@ -28,6 +28,7 @@ const gearStyle = {
         display: 'grid',
         color: 'black',
         background: theme.colors.test,
+        borderRadius: '10px',
         width: ['90vw', '80vw', '35vw'],
         
         firstRow: {

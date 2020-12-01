@@ -1,7 +1,6 @@
 import { Component } from "react";
 import { Box, SxStyleProp } from 'rebass'
 import statObject from "../game/statObject";
-import { subArray } from '../game/subArray'
 
 const subStyle = {
     style: {
@@ -36,7 +35,7 @@ export default class GearSub extends Component<{}, {id : string, stat : statObje
                     <Box id={this.id} sx={subStyle.style}>
                         {this.stat.name}
                     </Box>
-                    <Box id="Amount" sx={subStyle.style}>
+                    <Box id={this.id + "-GearSub-Amount"} sx={subStyle.style}>
                         Two
                     </Box>
                 </Box>

@@ -4,17 +4,15 @@ import theme from '../../styles/theme'
 import DotSlider from '../../components/shared/slider/DotSlider'
 import { subArray } from '../../components/gear/game/subArray'
 import GearSub from '../../components/gear/stats/GearSub'
-import subContainer from '../../components/gear/stats/subContainer'
+import SubContainer from '../../components/gear/stats/SubContainer'
 import { Style } from 'util'
 import colors from '../../styles/colors'
-
 
 var rarity = 3;
 var firstStat = 0;
 var secondStat = 1;
 var thirdStat = 2;
 var fourthStat = 3;
-
 
 const gearStyle = {
     wrapper: {
@@ -100,7 +98,7 @@ function changeStat(currentStat : number) {
 
 export default function Gear() {
 
-    const subStats = new subContainer({});
+    const subStats = new SubContainer({});
 
     return (
         <Box sx={gearStyle.wrapper}>

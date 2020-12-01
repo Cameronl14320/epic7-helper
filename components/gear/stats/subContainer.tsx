@@ -6,12 +6,12 @@ import { Component } from 'react';
 function subStats() : GearSub[] {
     let subStats : GearSub[] = [];
     for (let i = 0; i < 4; i++) {
-        subStats.push(new GearSub({key: (i + "Stat"), id: (i + "Stat"), stat:subArray[i]}))
+        subStats.push(new GearSub({key: ("subContainer-subStats-" + i), id: ("subContainer-subStats-" + i), stat:subArray[i]}))
     }
     return subStats;
 }
 
-export default class subContainer extends Component {
+export default class SubContainer extends Component {
 
     rarity : number = 3;
     selected : number = 4;
@@ -97,7 +97,7 @@ export default class subContainer extends Component {
         let currentStats = [];
         for (let i = 0; i < this.selected; i++) {
             currentStats.push(
-                <Box key={"substat" + i}>
+                <Box key={"subContainer-substat-" + i}>
                     {this.subStats[i].render()}
                 </Box>
                 );
@@ -110,7 +110,7 @@ export default class subContainer extends Component {
                     {currentStats}
                 </Box>
                 <Box>
-                    <Box id="selections" className="selections" sx={{
+                    <Box id="subContainer-selections" className="selections" sx={{
                         display: 'none',
                         marginTop: '10px',
                     }}>

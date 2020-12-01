@@ -85,12 +85,11 @@ export default class subContainer extends Component {
     }
 
     revealSelect() {
-        let revealPanel = document.getElementById("selections");
-        var onDisplay = revealPanel.style.display == "none";
-        if (!onDisplay) {
-            revealPanel.style.display = "none";
+        var reveal = document.getElementById("selections");
+        if (reveal.style.display == "inline-grid") {
+            reveal.style.display = "none";
         } else {
-            revealPanel.style.display = "inline-grid";
+            reveal.style.display = "inline-grid";
         }
     }
     

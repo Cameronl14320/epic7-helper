@@ -85,13 +85,23 @@ export default class subContainer extends Component {
     }
 
     revealSelect() {
-
+        let revealPanel = document.getElementById("selections");
+        var onDisplay = revealPanel.style.display == "none";
+        if (!onDisplay) {
+            revealPanel.style.display = "none";
+        } else {
+            revealPanel.style.display = "inline-grid";
+        }
     }
     
     render() {
         let currentStats = [];
         for (let i = 0; i < this.selected; i++) {
-            currentStats.push(this.subStats[i].render());
+            currentStats.push(
+                <Box key={"substat" + i}>
+                    {this.subStats[i].render()}
+                </Box>
+                );
         }
         let select = this.createSelect();
 
@@ -101,16 +111,22 @@ export default class subContainer extends Component {
                     {currentStats}
                 </Box>
                 <Box>
-                    <Box className="revealSelections" sx={{
-                        width: '100%',
-                    }}>
-                        Reveal
-                    </Box>
-                    <Box className="selections" sx={{
-                        display: 'inline-grid'
-
+                    <Box id="selections" className="selections" sx={{
+                        display: 'none',
+                        marginTop: '10px',
                     }}>
                         {select}
+                    </Box>
+
+                    <Box className="revealSelections" sx={{
+                        width: '100%',
+                        marginTop: '10px',
+                        height: ["5vh", "4vh", "2vh"],
+                        background: 'black',
+                        ":hover": {
+                            cursor: "pointer",
+                        }
+                    }} onClick={() => this.revealSelect()}>
                     </Box>
                 </Box>
             </>

@@ -13,25 +13,36 @@ export default class GearSub extends Component<{}, {id : string, stat : statObje
 
     stat : statObject;
     id : string;
+    display : boolean;
 
     constructor(props) {
         super(props);
         this.id = props.id;
         this.stat = props.stat;
+        this.display = true;
     }
 
     changeStat(newStat : statObject) {
         this.stat = newStat;
     }
 
-    render() {
+    hideDisplay() {
+        var wrapper = document.getElementById(this.id+"-GearSub-Wrapper");
+        if (wrapper.style.display == "none") {
+            wrapper.style.display = "block";
+        } else {
+            wrapper.style.display = "none";
+        }
+    }
 
+    render() {
         return (
             <Box style={{
                 MozUserSelect: "none",
                 WebkitUserSelect: "none",
-                msUserSelect: "none"
-            }}>
+                msUserSelect: "none",
+                display: "block",
+            }} id={this.id + "-GearSub-Wrapper"}>
                 <Box sx={{
                     display: 'inline-grid',
                     background: 'white',               

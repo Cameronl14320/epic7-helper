@@ -2,12 +2,14 @@ import { Box } from 'rebass'
 import GearSub from './GearSub'
 import { subArray } from '../game/subArray'
 import { Component } from 'react';
+import statObject from '../game/statObject';
 
 function subStats(stats : number[]) : GearSub[] {
     let subStats : GearSub[] = [];
     for (let i = 0; i < stats.length; i++) {
         subStats.push(new GearSub({key: ("subContainer-subStats-" + i), id: ("subContainer-subStats-" + i), stat:subArray[stats[i]]}))
     }
+    console.log("new s")
     return subStats;
 }
 
@@ -50,6 +52,7 @@ export default class SubContainer extends Component {
                 substat.style.background = "pink";
             }
         }
+        this.subStatDisplay = subStats(this.selectedStats)
         console.log(this.selectedStats);
     }
 

@@ -34,6 +34,11 @@ export default class SubContainer extends Component {
     let currentColumn = 1;
     let currentRow = 1;
     for (let i = 0; i < subArray.length; i++) {
+        let selected = (this.selectedStats.includes(i))
+        let status : string = "blue";
+        if (selected) {
+            status = "pink";
+        }
         selectStat.push(
             <Box key={i} sx={{
                 gridColumn: currentColumn,
@@ -42,7 +47,7 @@ export default class SubContainer extends Component {
                 paddingY: '5px',
                 margin: '2px',
                 textAlign: 'center',
-                background: 'blue',
+                background: status,
                 borderRadius: '2px',
                 ':hover': {
                     cursor: "pointer",

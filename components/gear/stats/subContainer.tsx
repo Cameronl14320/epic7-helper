@@ -13,7 +13,7 @@ function subStats(stats : number[]) : GearSub[] {
 
 export default class SubContainer extends Component {
 
-    rarity : number = 3;
+    rarity : number = 4;
     selectedStats : number[] = [];
     
     constructor(props) {
@@ -22,10 +22,21 @@ export default class SubContainer extends Component {
     }
 
     handleStat(id : string, stat : number) {
-        var currentSelected : number[];
-        
         let substat = document.getElementById(id);
-        substat.style.background = "pink";
+        
+        if (this.selectedStats.includes(stat)) {
+            let tempSelected : number[] = [];
+            let remove = this.selectedStats.indexOf(stat);
+            for (let i = 0; i < this.selectedStats.length; i++) {
+                if (i != remove) {
+                    tempSelected.push(this.selectedStats[i]);
+                }
+            }
+            this.selectedStats = tempSelected;
+            substat.style.background = "blue";
+        } else {
+                
+        }
     }
 
    createSelect() {
@@ -34,11 +45,11 @@ export default class SubContainer extends Component {
     let currentColumn = 1;
     let currentRow = 1;
     for (let i = 0; i < subArray.length; i++) {
-        let selected = (this.selectedStats.includes(i))
         let status : string = "blue";
-        if (selected) {
+        if (this.selectedStats.includes(i)) {
             status = "pink";
         }
+
         selectStat.push(
             <Box key={i} sx={{
                 gridColumn: currentColumn,

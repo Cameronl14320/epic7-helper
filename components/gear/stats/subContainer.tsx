@@ -85,7 +85,7 @@ export default class SubContainer extends Component {
     }
 
     revealSelect() {
-        var reveal = document.getElementById("selections");
+        var reveal = document.getElementById("subContainer-selections");
         if (reveal.style.display == "inline-grid") {
             reveal.style.display = "none";
         } else {

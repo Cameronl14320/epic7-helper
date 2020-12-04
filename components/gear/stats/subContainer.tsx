@@ -33,24 +33,7 @@ export default class SubContainer extends Component {
     changeStat(stat : number) {
 
     }
-
-    changeVisibility() {
-        var panel = document.getElementById("statPanel");
-        var state = panel.style.visibility == "hidden";
-        if (state) {
-            panel.style.visibility = "visible";
-            panel.style.display = "grid";
-        } else {
-            panel.style.visibility = "hidden";
-            panel.style.display = "none";
-        }
-    }
-
-        /*
-    * Might be better to create this in gear instead,
-    * Have a panel you can maximize -> click on x separate stats (Depending on rarity) to select them all in one panel rather than open up each time.
-    * This way, allows to keep track of what stats are selected
-    */
+    
    createSelect() {
     let selectStat = [];
     let maxPerColumn = 5;
@@ -67,10 +50,14 @@ export default class SubContainer extends Component {
                 textAlign: 'center',
                 background: 'blue',
                 borderRadius: '2px',
+                ':hover': {
+                    cursor: "pointer",
+                },
                 ':checked': {
                     color: 'blue',
+                    background: 'pink',
                 },
-            }} onClick={() => this.changeStat(i)}>
+            }} type="checkbox" onClick={() => this.changeStat(i)}>
                 {subArray[i].name}
             </Box>
         )
@@ -84,15 +71,6 @@ export default class SubContainer extends Component {
     return selectStat;
     }
 
-    revealSelect() {
-        var reveal = document.getElementById("subContainer-selections");
-        if (reveal.style.display == "inline-grid") {
-            reveal.style.display = "none";
-        } else {
-            reveal.style.display = "inline-grid";
-        }
-    }
-    
     render() {
         let currentStats = [];
         for (let i = 0; i < this.selected; i++) {
@@ -125,7 +103,14 @@ export default class SubContainer extends Component {
                         ":hover": {
                             cursor: "pointer",
                         }
-                    }} onClick={() => this.revealSelect()}>
+                    }} onClick={() => {
+                        var reveal = document.getElementById("subContainer-selections");
+                        if (reveal.style.display == "inline-grid") {
+                            reveal.style.display = "none";
+                        } else {
+                            reveal.style.display = "inline-grid";
+                        }
+                    }}>
                     </Box>
                 </Box>
             </>

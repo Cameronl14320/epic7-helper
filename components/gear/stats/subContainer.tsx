@@ -15,12 +15,22 @@ export default class SubContainer extends Component {
 
     rarity : number = 4;
     selectedStats : number[] = [];
+    subStatDisplay;
     
     constructor(props) {
         super(props);
         this.selectedStats = [5, 2, 3, 4];
+        this.subStatDisplay = subStats(this.selectedStats);
     }
 
+
+    /**
+     * Might be better to store the stat object rather than the number itself
+     * Maybe/ Maybe not
+     * 
+     * @param id 
+     * @param stat 
+     */
     handleStat(id : string, stat : number) {
         let substat = document.getElementById(id);
         
@@ -35,8 +45,12 @@ export default class SubContainer extends Component {
             this.selectedStats = tempSelected;
             substat.style.background = "blue";
         } else {
-                
+            if (this.selectedStats.length < this.rarity) {
+                this.selectedStats.push(stat);
+                substat.style.background = "pink";
+            }
         }
+        console.log(this.selectedStats);
     }
 
    createSelect() {
@@ -79,20 +93,22 @@ export default class SubContainer extends Component {
 
     render() {
         let currentStats = [];
-        let displayStats = subStats(this.selectedStats);
         for (let i = 0; i < this.selectedStats.length; i++) {
-            let substat = this.selectedStats[i];
-            console.log(substat);
             currentStats.push(
                 <Box key={"subContainer-substat-" + i}>
-                    {displayStats[i].render()}
+                    {this.subStatDisplay[i].render()}
                 </Box>
                 );
         }
         let select = this.createSelect();
 
         return (
-            <>
+            <Box style={{
+                userSelect: 'none',
+                MozUserSelect: 'none',
+                KhtmlUserSelect: 'none',
+                WebkitUserSelect: 'none',
+            }}>
                 <Box>
                     {currentStats}
                 </Box>
@@ -122,7 +138,7 @@ export default class SubContainer extends Component {
                     }}>
                     </Box>
                 </Box>
-            </>
+            </Box>
         )
     }
 

@@ -3,10 +3,10 @@ import GearSub from './GearSub'
 import { subArray } from '../game/subArray'
 import { Component } from 'react';
 
-function subStats() : GearSub[] {
+function subStats(stats : number[]) : GearSub[] {
     let subStats : GearSub[] = [];
-    for (let i = 0; i < 4; i++) {
-        subStats.push(new GearSub({key: ("subContainer-subStats-" + i), id: ("subContainer-subStats-" + i), stat:subArray[i]}))
+    for (let i = 0; i < stats.length; i++) {
+        subStats.push(new GearSub({key: ("subContainer-subStats-" + i), id: ("subContainer-subStats-" + i), stat:subArray[stats[i]]}))
     }
     return subStats;
 }
@@ -14,26 +14,20 @@ function subStats() : GearSub[] {
 export default class SubContainer extends Component {
 
     rarity : number = 3;
-    selected : number = 4;
     selectedStats : number[] = [];
-    subStats = subStats();
     
     constructor(props) {
         super(props);
+        this.selectedStats = [5, 2, 3, 4];
     }
 
-    getSelected() {
-        var currentSelect : number[] = [];
-        for (let i = 0; i < this.rarity; i++) {
-            currentSelect.push(subArray.indexOf(subStats[i].stat));
-        }
-        return currentSelect
+    handleStat(id : string, stat : number) {
+        var currentSelected : number[];
+        
+        let substat = document.getElementById(id);
+        substat.style.background = "pink";
     }
 
-    changeStat(stat : number) {
-
-    }
-    
    createSelect() {
     let selectStat = [];
     let maxPerColumn = 5;
@@ -53,11 +47,7 @@ export default class SubContainer extends Component {
                 ':hover': {
                     cursor: "pointer",
                 },
-                ':checked': {
-                    color: 'blue',
-                    background: 'pink',
-                },
-            }} type="checkbox" onClick={() => this.changeStat(i)}>
+            }} id={"subContainer-selection-" + i} onClick={() => this.handleStat("subContainer-selection-" + i, i)}>
                 {subArray[i].name}
             </Box>
         )
@@ -73,10 +63,13 @@ export default class SubContainer extends Component {
 
     render() {
         let currentStats = [];
-        for (let i = 0; i < this.selected; i++) {
+        let displayStats = subStats(this.selectedStats);
+        for (let i = 0; i < this.selectedStats.length; i++) {
+            let substat = this.selectedStats[i];
+            console.log(substat);
             currentStats.push(
                 <Box key={"subContainer-substat-" + i}>
-                    {this.subStats[i].render()}
+                    {displayStats[i].render()}
                 </Box>
                 );
         }

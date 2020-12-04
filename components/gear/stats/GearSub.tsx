@@ -20,6 +20,10 @@ export default class GearSub extends Component<{}, {id : string, stat : statObje
         this.stat = props.stat;
     }
 
+    changeStat(newStat : statObject) {
+        this.stat = newStat;
+    }
+
     render() {
 
         return (

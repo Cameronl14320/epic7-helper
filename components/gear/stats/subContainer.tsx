@@ -8,7 +8,6 @@ function subStats(stats : number[]) : GearSub[] {
     for (let i = 0; i < stats.length; i++) {
         subStats.push(new GearSub({key: ("subContainer-subStats-" + i), id: ("subContainer-subStats-" + i), stat:subArray[stats[i]]}))
     }
-    console.log("new s")
     return subStats;
 }
 
@@ -74,7 +73,6 @@ export default class SubContainer extends Component {
             }
             
         }
-        console.log(this.selectedStats);
     }
 
    createSelect() {
@@ -116,7 +114,7 @@ export default class SubContainer extends Component {
     }
 
     render() {
-        let currentStats = [];
+        var currentStats = [];
         for (let i = 0; i < this.selectedStats.length; i++) {
             currentStats.push(
                 <Box key={"subContainer-substat-" + i} id={"subContainer-substat-" + i}>
@@ -124,7 +122,7 @@ export default class SubContainer extends Component {
                 </Box>
                 );
         }
-        let select = this.createSelect();
+        var select = this.createSelect();
 
         return (
             <Box style={{

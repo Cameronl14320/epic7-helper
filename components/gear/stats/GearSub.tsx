@@ -1,5 +1,6 @@
 import { Component } from "react";
 import { Box, SxStyleProp } from 'rebass'
+import { Label, Input } from '@rebass/forms'
 import statObject from "../game/statObject";
 
 const subStyle = {
@@ -24,7 +25,7 @@ export default class GearSub extends Component<{}, {id : string, stat : statObje
     changeStat(newStat : statObject) {
         this.stat = newStat;
         var statLeft = document.getElementById(this.id);
-        var statRight = document.getElementById(this.id + "-GearSub-Amount");
+        var statRight = document.getElementById(this.id + "-GearSub-Value");
         statLeft.textContent = this.stat.name;
     }
 
@@ -56,8 +57,14 @@ export default class GearSub extends Component<{}, {id : string, stat : statObje
                     <Box id={this.id} sx={subStyle.style}>
                         {this.stat.name}
                     </Box>
-                    <Box id={this.id + "-GearSub-Amount"} sx={subStyle.style}>
-                        {this.value}
+                    <Box id={this.id + "-GearSub-Value"} sx={subStyle.style}>
+                        <Input id={this.id + "-GearSub-Value-Input"} type="number" onChange={(e) => {this.value = e.target.valueAsNumber; console.log(this.value)}} style={{
+                            height: "10px",
+                            WebkitAppearance: "none",
+                            MozAppearance: "textfield",
+                            margin: 0,
+                        }}>
+                        </Input>
                     </Box>
                 </Box>
             </Box>

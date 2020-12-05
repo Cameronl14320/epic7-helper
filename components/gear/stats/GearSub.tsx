@@ -13,6 +13,7 @@ export default class GearSub extends Component<{}, {id : string, stat : statObje
 
     stat : statObject;
     id : string;
+    value : number = 0;
 
     constructor(props) {
         super(props);
@@ -36,6 +37,10 @@ export default class GearSub extends Component<{}, {id : string, stat : statObje
         }
     }
 
+    returnValue() {
+        return this.value;
+    }
+
     render() {
         return (
             <Box style={{
@@ -52,7 +57,7 @@ export default class GearSub extends Component<{}, {id : string, stat : statObje
                         {this.stat.name}
                     </Box>
                     <Box id={this.id + "-GearSub-Amount"} sx={subStyle.style}>
-                        Two
+                        {this.value}
                     </Box>
                 </Box>
             </Box>

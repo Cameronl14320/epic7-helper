@@ -13,22 +13,23 @@ export default class GearSub extends Component<{}, {id : string, stat : statObje
 
     stat : statObject;
     id : string;
-    display : boolean;
 
     constructor(props) {
         super(props);
         this.id = props.id;
         this.stat = props.stat;
-        this.display = true;
     }
 
     changeStat(newStat : statObject) {
         this.stat = newStat;
+        var statLeft = document.getElementById(this.id);
+        var statRight = document.getElementById(this.id + "-GearSub-Amount");
+        statLeft.textContent = this.stat.name;
     }
 
-    hideDisplay() {
+    toggleDisplay(display : boolean) {
         var wrapper = document.getElementById(this.id+"-GearSub-Wrapper");
-        if (wrapper.style.display == "none") {
+        if (display) {
             wrapper.style.display = "block";
         } else {
             wrapper.style.display = "none";

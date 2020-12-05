@@ -2,7 +2,6 @@ import { Box } from 'rebass'
 import GearSub from './GearSub'
 import { subArray } from '../game/subArray'
 import { Component } from 'react';
-import statObject from '../game/statObject';
 
 function subStats(stats : number[]) : GearSub[] {
     let subStats : GearSub[] = [];
@@ -17,14 +16,13 @@ export default class SubContainer extends Component {
 
     rarity : number = 4;
     selectedStats : number[] = [];
-    subStatDisplay;
+    subStatDisplay : GearSub[];
     
     constructor(props) {
         super(props);
         this.selectedStats = [5, 2, 3, 4];
         this.subStatDisplay = subStats(this.selectedStats);
     }
-
 
     /**
      * Might be better to store the stat object rather than the number itself
@@ -35,7 +33,7 @@ export default class SubContainer extends Component {
      */
     handleStat(id : string, stat : number) {
         let substat = document.getElementById(id);
-        
+        let change = false;
         if (this.selectedStats.includes(stat)) {
             let tempSelected : number[] = [];
             let remove = this.selectedStats.indexOf(stat);
@@ -46,13 +44,36 @@ export default class SubContainer extends Component {
             }
             this.selectedStats = tempSelected;
             substat.style.background = "blue";
+            change = true;
         } else {
             if (this.selectedStats.length < this.rarity) {
                 this.selectedStats.push(stat);
                 substat.style.background = "pink";
+                change = true;
             }
         }
-        this.subStatDisplay = subStats(this.selectedStats)
+    
+        if (change) {
+            for (let i = 0 ; i < this.selectedStats.length; i++) {
+                this.subStatDisplay[i].changeStat(subArray[this.selectedStats[i]]);
+
+            }
+
+            let selectedLength = this.selectedStats.length;
+            var displayLength = this.subStatDisplay.length;
+
+            for (let i = 0; i < this.subStatDisplay.length; i++) {
+                this.subStatDisplay[i].toggleDisplay(true);
+            }
+
+            if (selectedLength < displayLength) {
+                let difference = displayLength - selectedLength;
+                for (let j = displayLength - difference; j < displayLength; j++) {
+                    this.subStatDisplay[j].toggleDisplay(false);
+                }
+            }
+            
+        }
         console.log(this.selectedStats);
     }
 
@@ -98,7 +119,7 @@ export default class SubContainer extends Component {
         let currentStats = [];
         for (let i = 0; i < this.selectedStats.length; i++) {
             currentStats.push(
-                <Box key={"subContainer-substat-" + i}>
+                <Box key={"subContainer-substat-" + i} id={"subContainer-substat-" + i}>
                     {this.subStatDisplay[i].render()}
                 </Box>
                 );

@@ -25,7 +25,6 @@ export default class GearSub extends Component<{}, {id : string, stat : statObje
     changeStat(newStat : statObject) {
         this.stat = newStat;
         var statLeft = document.getElementById(this.id);
-        var statRight = document.getElementById(this.id + "-GearSub-Value");
         statLeft.textContent = this.stat.name;
     }
 

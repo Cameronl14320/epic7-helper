@@ -132,7 +132,7 @@ export default function Gear() {
                         <Box>
                         <Slider 
                             min={0} max={15} step={3} dots dotStyle={{borderColor: theme.colors.primary}} activeDotStyle={{borderColor: theme.colors.secondary}}
-                            onChange={(e) => {}}
+                            onChange={(e) => {subStats.updateEnhance(e.valueOf())}}
                         />
                         </Box>
                     </Box>

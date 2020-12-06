@@ -14,6 +14,7 @@ function subStats(stats : number[]) : GearSub[] {
 export default class SubContainer extends Component {
 
     rarity : number = 4;
+    enhancements : number = 0;
     selectedStats : number[] = [];
     subStatDisplay : GearSub[];
     
@@ -24,11 +25,11 @@ export default class SubContainer extends Component {
     }
 
     /**
-     * Might be better to store the stat object rather than the number itself
-     * Maybe/ Maybe not
-     * 
-     * @param id 
-     * @param stat 
+     * Updates currently selected stats
+     * If current one is clicked, removes from selection
+     * If new one, add it to the selections granted less than max currently selected
+     * @param id the id of the selected stat div
+     * @param stat the stat selected (index in subArray array)
      */
     handleStat(id : string, stat : number) {
         let substat = document.getElementById(id);
@@ -79,6 +80,11 @@ export default class SubContainer extends Component {
         }
     }
 
+    /**
+     * Creates the selection div
+     * Creates a button for each substat in the subArray array
+     * Stores in a grid for display
+     */
    createSelect() {
     let selectStat = [];
     let maxPerColumn = 5;
@@ -115,6 +121,11 @@ export default class SubContainer extends Component {
     }
 
     return selectStat;
+    }
+
+    updateEnhance(newEnhance : number) {
+        this.enhancements = newEnhance;
+        console.log(this.enhancements);
     }
 
     render() {

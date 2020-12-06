@@ -144,9 +144,23 @@ export default function Gear() {
             </Box>
             
             <Box sx={{
-                display: 'flex'
+                display: 'flex',
+                textAlign: 'center',
+                justifyContent: 'center',
+                margin: '15px',
             }}>
-                    Calculate
+                <Box sx={{
+                    padding: '15px',
+                    borderRadius: '5px',
+                    background: 'blue',
+                    color: 'white',
+                    width: ['90vw', '80vw', '35vw'],
+                    ':hover': {
+                        cursor: 'pointer',
+                    }
+                }}>
+                    Compute
+                </Box>
             </Box>
         </Box>
     )

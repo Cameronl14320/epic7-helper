@@ -51,29 +51,31 @@ export default class SubContainer extends Component {
                 change = true;
             }
         }
-        this.refreshStats(change);
+        this.refreshStats();
     }
 
-    refreshStats(change : boolean) {
-        if (change) {
-            for (let i = 0 ; i < this.selectedStats.length; i++) {
-                this.subStatDisplay[i].changeStat(subArray[this.selectedStats[i]]);
-            }
+    /**
+     * Refresh all stats in case some are hidden or displayed incorrectly
+     */
+    refreshStats() {
+        // Update stats to match selected stat objects
+        for (let i = 0 ; i < this.selectedStats.length; i++) {
+            this.subStatDisplay[i].changeStat(subArray[this.selectedStats[i]]);
+        }
 
-            let selectedLength = this.selectedStats.length;
-            var displayLength = this.subStatDisplay.length;
+        // Refresh stats to make sure they're all visible
+        for (let i = 0; i < this.subStatDisplay.length; i++) {
+            this.subStatDisplay[i].toggleDisplay(true);
+        }
 
-            for (let i = 0; i < this.subStatDisplay.length; i++) {
-                this.subStatDisplay[i].toggleDisplay(true);
+        // If max stats not selected, hide hidden ones
+        let selectedLength = this.selectedStats.length;
+        var displayLength = this.subStatDisplay.length;
+        if (selectedLength < displayLength) { // Get difference in length to find out how many are missing
+            let difference = displayLength - selectedLength;
+            for (let j = displayLength - difference; j < displayLength; j++) {
+                this.subStatDisplay[j].toggleDisplay(false);
             }
-
-            if (selectedLength < displayLength) {
-                let difference = displayLength - selectedLength;
-                for (let j = displayLength - difference; j < displayLength; j++) {
-                    this.subStatDisplay[j].toggleDisplay(false);
-                }
-            }
-            
         }
     }
 

@@ -1,7 +1,8 @@
 import React from 'react'
 import { Box, Text, Button, SxStyleProp } from 'rebass'
 import theme from '../../styles/theme'
-import DotSlider from '../../components/shared/slider/DotSlider'
+import Slider from 'rc-slider'
+import 'rc-slider/assets/index.css'
 import { subArray } from '../../components/gear/game/subArray'
 import SubContainer from '../../components/gear/stats/SubContainer'
 import colors from '../../styles/colors'
@@ -16,7 +17,7 @@ const gearStyle = {
     wrapper: {
         breakpoints: theme.breakpoints,
         background: 'white',
-        display: 'flex',
+        display: 'block',
         justifyContent: 'center',
         paddingTop: '10px',
     },
@@ -100,38 +101,52 @@ export default function Gear() {
 
     return (
         <Box sx={gearStyle.wrapper}>
-            <Box sx={gearStyle.grid}>
+            <Box sx={{
+                display: 'flex',
+                justifyContent: 'center',
+            }}>
+                <Box sx={gearStyle.grid}>
 
-                <Box sx={gearStyle.grid.firstRow}>
-                    <Box className="gearRarity" style={gearStyle.grid.firstRow.rarityContainer}>
-                        <Box sx={{
-                            display: 'flex',
-                        }}>
-                            <Box className="rarityIcon" sx={gearStyle.grid.firstRow.rarityContainer.rarityIcon} onClick={() => changeRarity()}>
-                                <Box sx={{
-                                    color: 'black',
-                                }}>
-                                    grid
+                    <Box sx={gearStyle.grid.firstRow}>
+                        <Box className="gearRarity" style={gearStyle.grid.firstRow.rarityContainer}>
+                            <Box sx={{
+                                display: 'flex',
+                            }}>
+                                <Box className="rarityIcon" sx={gearStyle.grid.firstRow.rarityContainer.rarityIcon} onClick={() => changeRarity()}>
+                                    <Box sx={{
+                                        color: 'black',
+                                    }}>
+                                        grid
+                                    </Box>
+                                </Box>
+                                <Box className="enhanceLevel" sx={gearStyle.grid.firstRow.rarityContainer.enhanceIcon}>
                                 </Box>
                             </Box>
-                            <Box className="enhanceLevel" sx={gearStyle.grid.firstRow.rarityContainer.enhanceIcon}>
-                            </Box>
+                        </Box>
+                        <Box className="gearText" sx={gearStyle.grid.firstRow.gearText}>
+                            Mythic
                         </Box>
                     </Box>
-                    <Box className="gearText" sx={gearStyle.grid.firstRow.gearText}>
-                        Mythic
-                    </Box>
-                </Box>
-                
-                <Box style={gearStyle.grid.secondRow}>
-                    <Box>
-                        <DotSlider min={0} max={15} step={3}/>
-                    </Box>
-                </Box>
 
-                <Box sx={gearStyle.grid.thirdRow}>
-                    {subStats.render()}
+                    <Box style={gearStyle.grid.secondRow}>
+                        <Box>
+                        <Slider 
+                            min={0} max={15} step={3} dots dotStyle={{borderColor: theme.colors.primary}} activeDotStyle={{borderColor: theme.colors.secondary}}
+                            onChange={(e) => {}}
+                        />
+                        </Box>
+                    </Box>
+
+                    <Box sx={gearStyle.grid.thirdRow}>
+                        {subStats.render()}
+                    </Box>
                 </Box>
+            </Box>
+            
+            <Box sx={{
+                display: 'flex'
+            }}>
+                    Calculate
             </Box>
         </Box>
     )

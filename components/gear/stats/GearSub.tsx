@@ -64,8 +64,7 @@ export default class GearSub extends Component<{}, {id : string, stat : statObje
                             margin: 0,
                         }}  onChange={(e) => {
                                 e.target.value = Math.max(0, parseInt(e.target.value)).toString().slice(0, 2); // only allow two characters
-                                this.value = e.target.valueAsNumber; console.log(this.value);
-
+                                this.value = e.target.valueAsNumber; console.log(this.value); // Update current value
                             }} >
                         </Input>
                     </Box>

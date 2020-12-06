@@ -51,11 +51,13 @@ export default class SubContainer extends Component {
                 change = true;
             }
         }
-    
+        this.refreshStats(change);
+    }
+
+    refreshStats(change : boolean) {
         if (change) {
             for (let i = 0 ; i < this.selectedStats.length; i++) {
                 this.subStatDisplay[i].changeStat(subArray[this.selectedStats[i]]);
-
             }
 
             let selectedLength = this.selectedStats.length;

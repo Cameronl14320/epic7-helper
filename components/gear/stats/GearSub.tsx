@@ -57,12 +57,16 @@ export default class GearSub extends Component<{}, {id : string, stat : statObje
                         {this.stat.name}
                     </Box>
                     <Box id={this.id + "-GearSub-Value"} sx={subStyle.style}>
-                        <Input id={this.id + "-GearSub-Value-Input"} type="number" onChange={(e) => {this.value = e.target.valueAsNumber; console.log(this.value)}} style={{
+                        <Input id={this.id + "-GearSub-Value-Input"} type="number" style={{
                             height: "10px",
                             WebkitAppearance: "none",
                             MozAppearance: "textfield",
                             margin: 0,
-                        }}>
+                        }}  onChange={(e) => {
+                                e.target.value = Math.max(0, parseInt(e.target.value)).toString().slice(0, 2); // only allow two characters
+                                this.value = e.target.valueAsNumber; console.log(this.value);
+
+                            }} >
                         </Input>
                     </Box>
                 </Box>

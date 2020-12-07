@@ -60,6 +60,7 @@ export default class GearSub extends Component<{}, {id : string, stat : statObje
                     gridTemplateAreas: "\"a a a a b\" \"a a a a b\"",
                     width: '100%',
                     gap: '10px',
+                    paddingY: '5px',
                 }}>
                     <Box id={this.id} sx={{
                         gridArea: 'a',
@@ -74,7 +75,7 @@ export default class GearSub extends Component<{}, {id : string, stat : statObje
                             height: '100%',
                         }
                     }>
-                        <Input id={this.id + "-GearSub-Value-Input"} type="number" style={{
+                        <Input id={this.id + "-GearSub-Value-Input"} placeholder='Value' type='number' name='value' style={{
                             WebkitAppearance: "none",
                             MozAppearance: "textfield",
                             maxWidth: '75px',
@@ -82,6 +83,8 @@ export default class GearSub extends Component<{}, {id : string, stat : statObje
                             height: '100%',
                             borderRadius: '5px',
                             textAlign: 'center',
+                            background: 'white',
+                            border: 'none',
 
                         }}  onChange={(e) => {
                                 e.target.value = Math.max(0, parseInt(e.target.value)).toString().slice(0, 2); // only allow two characters

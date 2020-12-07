@@ -13,10 +13,10 @@ function subStats(stats : number[]) : GearSub[] {
 
 export default class SubContainer extends Component {
 
-    rarity : number = 4;
-    enhancements : number = 0;
-    selectedStats : number[] = [];
-    subStatDisplay : GearSub[];
+    private rarity : number = 4;
+    private enhancements : number = 0;
+    private selectedStats : number[] = [];
+    private subStatDisplay : GearSub[];
     
     constructor(props) {
         super(props);
@@ -123,6 +123,10 @@ export default class SubContainer extends Component {
     return selectStat;
     }
 
+    /**
+     * Set the number of enhancements
+     * @param newEnhance New number of enhancements
+     */
     updateEnhance(newEnhance : number) {
         this.enhancements = newEnhance;
         console.log(this.enhancements);

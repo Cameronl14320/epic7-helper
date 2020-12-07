@@ -50,9 +50,9 @@ const subStyle = {
 
 export default class GearSub extends Component<{}, {id : string, stat : statObject}> {
 
-    stat : statObject;
-    id : string;
-    value : number = 0;
+    private stat : statObject;
+    private id : string;
+    private value : number = 0;
 
     constructor(props) {
         super(props);

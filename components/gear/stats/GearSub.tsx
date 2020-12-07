@@ -5,8 +5,11 @@ import statObject from "../game/statObject";
 
 const subStyle = {
     style: {
-        gridRow: 1,
         padding: '0px 5px 0px 5px',
+        fontSize: '1.5em',
+    },
+    substat: {
+        maxHeight: '1.5em'
     }
 }
 
@@ -48,20 +51,38 @@ export default class GearSub extends Component<{}, {id : string, stat : statObje
                 WebkitUserSelect: "none",
                 msUserSelect: "none",
                 display: "block",
+                marginLeft: '10px',
+                marginRight: '10px',
             }} id={this.id + "-GearSub-Wrapper"}>
                 <Box sx={{
-                    display: 'inline-grid',
-                    background: 'white',               
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(2, 1fr);',
+                    gridTemplateAreas: "\"a a a a b\" \"a a a a b\"",
+                    width: '100%',
+                    gap: '10px',
                 }}>
-                    <Box id={this.id} sx={subStyle.style}>
+                    <Box id={this.id} sx={{
+                        gridArea: 'a',
+                        textAlign: 'left',
+                        fontSize: subStyle.substat.maxHeight,
+                    }}>
                         {this.stat.name}
                     </Box>
-                    <Box id={this.id + "-GearSub-Value"} sx={subStyle.style}>
+                    <Box id={this.id + "-GearSub-Value"} sx={
+                        {
+                            gridArea: 'b',
+                            height: '100%',
+                        }
+                    }>
                         <Input id={this.id + "-GearSub-Value-Input"} type="number" style={{
-                            height: "10px",
                             WebkitAppearance: "none",
                             MozAppearance: "textfield",
-                            margin: 0,
+                            maxWidth: '75px',
+                            padding: '0',
+                            height: '100%',
+                            borderRadius: '5px',
+                            textAlign: 'center',
+
                         }}  onChange={(e) => {
                                 e.target.value = Math.max(0, parseInt(e.target.value)).toString().slice(0, 2); // only allow two characters
                                 this.value = e.target.valueAsNumber; console.log(this.value); // Update current value

@@ -75,7 +75,7 @@ export default class GearSub extends Component<{}, {id : string, stat : statObje
                             height: '100%',
                         }
                     }>
-                        <Input id={this.id + "-GearSub-Value-Input"} placeholder='Value' type='number' name='value' style={{
+                        <Input id={this.id + "-GearSub-Value-Input"} placeholder='Value' type='number' style={{
                             WebkitAppearance: "none",
                             MozAppearance: "textfield",
                             maxWidth: '75px',
@@ -85,8 +85,9 @@ export default class GearSub extends Component<{}, {id : string, stat : statObje
                             textAlign: 'center',
                             background: 'white',
                             border: 'none',
-
-                        }}  onChange={(e) => {
+                        }}  
+                        onChange={(e) => {
+                            console.log(e.type);
                                 e.target.value = Math.max(0, parseInt(e.target.value)).toString().slice(0, 2); // only allow two characters
                                 this.value = e.target.valueAsNumber; console.log(this.value); // Update current value
                             }} >

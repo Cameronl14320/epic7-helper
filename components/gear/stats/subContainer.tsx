@@ -140,11 +140,12 @@ export default class SubContainer extends Component {
         var select = this.createSelect();
 
         return (
-            <Box style={{
+            <Box sx={{
                 userSelect: 'none',
                 MozUserSelect: 'none',
                 KhtmlUserSelect: 'none',
                 WebkitUserSelect: 'none',
+                minWidth: '300px',
             }}>
                 <Box>
                     {currentStats}

@@ -41,6 +41,10 @@ export default class SubContainer extends Component {
         return values;
     }
 
+    getEnhancement() : number {
+        return this.enhancements;
+    }
+
     /**
      * Updates currently selected stats
      * If current one is clicked, removes from selection

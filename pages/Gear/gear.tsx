@@ -82,13 +82,17 @@ const gearStyle = {
     },
 }
 
-function changeRarity() {
-
+function changeRarity(newRarity : number) {
+    rarity = newRarity;
 }
 
 function calculate(subStats : SubContainer) {
     let values : number[] = subStats.getValues();
     let stats : statObject[] = subStats.getStats();
+    let enhancements : number = subStats.getEnhancement();
+
+    // Identify which stats have been enhanced
+    // Need to account for scenarios where more than possible values have been applied
 }
 
 function changeStat(currentStat : number) {

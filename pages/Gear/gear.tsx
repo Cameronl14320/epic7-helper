@@ -157,6 +157,10 @@ export default function Gear() {
                 display: 'flex',
                 textAlign: 'center',
                 justifyContent: 'center',
+                userSelect: 'none',
+                MozUserSelect: 'none',
+                KhtmlUserSelect: 'none',
+                WebkitUserSelect: 'none',
                 margin: '15px',
             }}>
                 <Box sx={{

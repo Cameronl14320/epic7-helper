@@ -26,7 +26,7 @@ export default class SubContainer extends Component {
     }
 
     getStats() : statObject[] {
-        let stats : statObject[];
+        let stats : statObject[] = [];
         for (let i = 0 ; i < this.selectedStats.length; i++) {
             stats.push(subArray[this.selectedStats[i]])
         }
@@ -34,7 +34,7 @@ export default class SubContainer extends Component {
     }
 
     getValues() : number[] {
-        let values : number[];
+        let values : number[] = [];
         for (let i = 0 ; i < this.subStatDisplay.length; i++) {
             values.push(this.subStatDisplay[i].returnValue())
         }

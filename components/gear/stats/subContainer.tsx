@@ -2,6 +2,7 @@ import { Box } from 'rebass'
 import GearSub from './GearSub'
 import { subArray } from '../game/subArray'
 import { Component } from 'react';
+import statObject from '../game/statObject';
 
 function subStats(stats : number[]) : GearSub[] {
     let subStats : GearSub[] = [];
@@ -22,6 +23,22 @@ export default class SubContainer extends Component {
         super(props);
         this.selectedStats = [5, 2, 3, 4];
         this.subStatDisplay = subStats(this.selectedStats);
+    }
+
+    getStats() : statObject[] {
+        let stats : statObject[];
+        for (let i = 0 ; i < this.selectedStats.length; i++) {
+            stats.push(subArray[this.selectedStats[i]])
+        }
+        return stats;
+    }
+
+    getValues() : number[] {
+        let values : number[];
+        for (let i = 0 ; i < this.subStatDisplay.length; i++) {
+            values.push(this.subStatDisplay[i].returnValue())
+        }
+        return values;
     }
 
     /**

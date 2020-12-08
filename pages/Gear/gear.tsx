@@ -6,6 +6,7 @@ import 'rc-slider/assets/index.css'
 import { subArray } from '../../components/gear/game/subArray'
 import SubContainer from '../../components/gear/stats/SubContainer'
 import colors from '../../styles/colors'
+import statObject from '../../components/gear/game/statObject'
 
 var rarity = 3;
 var firstStat = 0;
@@ -85,6 +86,11 @@ function changeRarity() {
 
 }
 
+function calculate(subStats : SubContainer) {
+    let values : number[] = subStats.getValues();
+    let stats : statObject[] = subStats.getStats();
+}
+
 function changeStat(currentStat : number) {
     var totalStats = subArray.length;
 
@@ -158,7 +164,7 @@ export default function Gear() {
                     ':hover': {
                         cursor: 'pointer',
                     }
-                }}>
+                }} onClick={() => calculate(subStats)}>
                     Compute
                 </Box>
             </Box>

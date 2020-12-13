@@ -82,8 +82,8 @@ const gearStyle = {
     },
 }
 
-function changeRarity(newRarity : number) {
-    rarity = newRarity;
+function changeRarity() {
+    // Select rarity
 }
 
 function calculate(subStats : SubContainer) {
@@ -132,9 +132,6 @@ export default function Gear() {
                                 <Box className="enhanceLevel" sx={gearStyle.grid.firstRow.rarityContainer.enhanceIcon}>
                                 </Box>
                             </Box>
-                        </Box>
-                        <Box className="gearText" sx={gearStyle.grid.firstRow.gearText}>
-                            Mythic
                         </Box>
                     </Box>
 

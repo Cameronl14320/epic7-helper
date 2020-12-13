@@ -14,7 +14,7 @@ const subStyle = {
     },
     subContainer: {
         selections: {
-            display: 'none',
+            display: "inline-grid",
             marginTop: '10px',
         },
         reveal: {
@@ -45,6 +45,8 @@ export default class SubContainer extends Component {
     private enhancements : number = 0;
     private selectedStats : number[] = [];
     private subStatDisplay : GearSub[];
+
+    private displayingSelections : boolean = false;
     
     constructor(props) {
         super(props);
@@ -203,10 +205,19 @@ export default class SubContainer extends Component {
 
                     <Box className="revealSelections" sx={subStyle.subContainer.reveal} onClick={() => {
                         var reveal = document.getElementById("subContainer-selections");
+                        /*
                         if (reveal.style.display == "inline-grid") {
                             reveal.style.display = "none";
                         } else {
                             reveal.style.display = "inline-grid";
+                        }
+                        */
+                        if (this.displayingSelections) {
+                            reveal.style.height = "0";
+                            this.displayingSelections = false;
+                        } else {
+                            reveal.style.height = "auto";
+                            this.displayingSelections = true;
                         }
                     }}>
                     </Box>

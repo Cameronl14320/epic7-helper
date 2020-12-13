@@ -4,6 +4,33 @@ import { subArray } from '../game/subArray'
 import { Component } from 'react';
 import statObject from '../game/statObject';
 
+const subStyle = {
+    wrapper: {
+        userSelect: 'none',
+        MozUserSelect: 'none',
+        KhtmlUserSelect: 'none',
+        WebkitUserSelect: 'none',
+        minWidth: '300px',
+    },
+    subContainer: {
+        selections: {
+            display: 'none',
+            marginTop: '10px',
+        },
+        reveal: {
+            width: '100%',
+            marginTop: '10px',
+            height: ["6vh", "5vh", "4vh"],
+            background: 'black',
+            ":hover": {
+                cursor: "pointer",
+            }
+        }
+
+    }
+
+}
+
 function subStats(stats : number[]) : GearSub[] {
     let subStats : GearSub[] = [];
     for (let i = 0; i < stats.length; i++) {
@@ -165,33 +192,16 @@ export default class SubContainer extends Component {
         var select = this.createSelect();
 
         return (
-            <Box sx={{
-                userSelect: 'none',
-                MozUserSelect: 'none',
-                KhtmlUserSelect: 'none',
-                WebkitUserSelect: 'none',
-                minWidth: '300px',
-            }}>
+            <Box sx={subStyle.wrapper}>
                 <Box>
                     {currentStats}
                 </Box>
                 <Box>
-                    <Box id="subContainer-selections" className="selections" sx={{
-                        display: 'none',
-                        marginTop: '10px',
-                    }}>
+                    <Box id="subContainer-selections" className="selections" sx={subStyle.subContainer.selections}>
                         {select}
                     </Box>
 
-                    <Box className="revealSelections" sx={{
-                        width: '100%',
-                        marginTop: '10px',
-                        height: ["6vh", "5vh", "4vh"],
-                        background: 'black',
-                        ":hover": {
-                            cursor: "pointer",
-                        }
-                    }} onClick={() => {
+                    <Box className="revealSelections" sx={subStyle.subContainer.reveal} onClick={() => {
                         var reveal = document.getElementById("subContainer-selections");
                         if (reveal.style.display == "inline-grid") {
                             reveal.style.display = "none";

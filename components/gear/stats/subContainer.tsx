@@ -16,6 +16,14 @@ const subStyle = {
         selections: {
             display: "inline-grid",
             marginTop: '10px',
+            hidden: {
+                visibility: "hidden",
+                height: '0',
+            },
+            revealed: {
+                visibility: "visible",
+                height: 'auto',
+            },
         },
         reveal: {
             width: '100%',
@@ -199,25 +207,20 @@ export default class SubContainer extends Component {
                     {currentStats}
                 </Box>
                 <Box>
-                    <Box id="subContainer-selections" className="selections" sx={subStyle.subContainer.selections}>
+                    <Box id="subContainer-selections" className="selections" style={{visibility: "hidden", height: '0'}} sx={subStyle.subContainer.selections}>
                         {select}
                     </Box>
 
                     <Box className="revealSelections" sx={subStyle.subContainer.reveal} onClick={() => {
                         var reveal = document.getElementById("subContainer-selections");
-                        /*
-                        if (reveal.style.display == "inline-grid") {
-                            reveal.style.display = "none";
+                        if (reveal.style.visibility == "visible") {
+                            reveal.style.visibility = subStyle.subContainer.selections.hidden.visibility;
+                            reveal.style.height = subStyle.subContainer.selections.hidden.height;
+
                         } else {
-                            reveal.style.display = "inline-grid";
-                        }
-                        */
-                        if (this.displayingSelections) {
-                            reveal.style.height = "0";
-                            this.displayingSelections = false;
-                        } else {
-                            reveal.style.height = "auto";
-                            this.displayingSelections = true;
+                            reveal.style.visibility = subStyle.subContainer.selections.revealed.visibility;
+                            reveal.style.height = subStyle.subContainer.selections.revealed.height;
+
                         }
                     }}>
                     </Box>

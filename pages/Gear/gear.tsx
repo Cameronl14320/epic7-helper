@@ -69,6 +69,20 @@ const gearStyle = {
         sliderRow: {
             gridRow: '2',
             margin: '15px',
+            slider: {
+                handleStyle: {
+
+                },
+                railStyle: {
+
+                },
+                dotStyle: {
+                    borderColor: theme.colors.primary,
+                },
+                activeDotStyle: {
+
+                },
+            },
         },
 
         substatRow: {
@@ -138,7 +152,11 @@ export default function Gear() {
                     <Box style={gearStyle.grid.sliderRow}>
                         <Box>
                         <Slider 
-                            min={0} max={15} step={3} dots dotStyle={{borderColor: theme.colors.primary}} activeDotStyle={{borderColor: theme.colors.secondary}}
+                            min={0} max={15} step={3} dots 
+                            handleStyle={gearStyle.grid.sliderRow.slider.handleStyle}
+                            railStyle={gearStyle.grid.sliderRow.slider.railStyle}
+                            dotStyle={gearStyle.grid.sliderRow.slider.dotStyle} 
+                            activeDotStyle={gearStyle.grid.sliderRow.slider.activeDotStyle}
                             onChange={(e) => {subStats.updateEnhance(e.valueOf())}}
                         />
                         </Box>

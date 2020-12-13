@@ -29,7 +29,7 @@ const gearStyle = {
         borderRadius: '10px',
         width: ['90vw', '80vw', '35vw'],
         
-        firstRow: {
+        iconRow: {
             gridRow: '1',
             margin: '15px',
             whiteSpace: 'nowrap',
@@ -66,12 +66,12 @@ const gearStyle = {
             }
         },
 
-        secondRow: {
+        sliderRow: {
             gridRow: '2',
             margin: '15px',
         },
 
-        thirdRow: {
+        substatRow: {
             gridRow: '3',
             justifyContent: 'center',
             textAlign: 'center',
@@ -117,25 +117,25 @@ export default function Gear() {
             }}>
                 <Box sx={gearStyle.grid}>
 
-                    <Box sx={gearStyle.grid.firstRow}>
-                        <Box className="gearRarity" style={gearStyle.grid.firstRow.rarityContainer}>
+                    <Box sx={gearStyle.grid.iconRow}>
+                        <Box className="gearRarity" style={gearStyle.grid.iconRow.rarityContainer}>
                             <Box sx={{
                                 display: 'flex',
                             }}>
-                                <Box className="rarityIcon" sx={gearStyle.grid.firstRow.rarityContainer.rarityIcon} onClick={() => changeRarity()}>
+                                <Box className="rarityIcon" sx={gearStyle.grid.iconRow.rarityContainer.rarityIcon} onClick={() => changeRarity()}>
                                     <Box sx={{
                                         color: 'black',
                                     }}>
                                         grid
                                     </Box>
                                 </Box>
-                                <Box className="enhanceLevel" sx={gearStyle.grid.firstRow.rarityContainer.enhanceIcon}>
+                                <Box className="enhanceLevel" sx={gearStyle.grid.iconRow.rarityContainer.enhanceIcon}>
                                 </Box>
                             </Box>
                         </Box>
                     </Box>
 
-                    <Box style={gearStyle.grid.secondRow}>
+                    <Box style={gearStyle.grid.sliderRow}>
                         <Box>
                         <Slider 
                             min={0} max={15} step={3} dots dotStyle={{borderColor: theme.colors.primary}} activeDotStyle={{borderColor: theme.colors.secondary}}
@@ -144,7 +144,7 @@ export default function Gear() {
                         </Box>
                     </Box>
 
-                    <Box sx={gearStyle.grid.thirdRow}>
+                    <Box sx={gearStyle.grid.substatRow}>
                         {subStats.render()}
                     </Box>
                 </Box>

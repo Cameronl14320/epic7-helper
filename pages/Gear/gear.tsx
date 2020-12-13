@@ -22,6 +22,11 @@ const gearStyle = {
         justifyContent: 'center',
         paddingTop: '10px',
     },
+
+    gridContainer: {
+        display: 'flex',
+        justifyContent: 'center',
+    },
     grid: {
         display: 'grid',
         color: 'black',
@@ -94,6 +99,27 @@ const gearStyle = {
             }
         },
     },
+    calculate: {
+        display: 'flex',
+        textAlign: 'center',
+        justifyContent: 'center',
+        userSelect: 'none',
+        MozUserSelect: 'none',
+        KhtmlUserSelect: 'none',
+        WebkitUserSelect: 'none',
+        margin: '15px',
+
+        button: {
+            padding: '15px',
+            borderRadius: '5px',
+            background: 'blue',
+            color: 'white',
+            width: ['90vw', '80vw', '35vw'],
+            ':hover': {
+                cursor: 'pointer',
+            }
+        }
+    }
 }
 
 function changeRarity() {
@@ -125,10 +151,7 @@ export default function Gear() {
 
     return (
         <Box sx={gearStyle.wrapper}>
-            <Box sx={{
-                display: 'flex',
-                justifyContent: 'center',
-            }}>
+            <Box sx={gearStyle.gridContainer}>
                 <Box sx={gearStyle.grid}>
 
                     <Box sx={gearStyle.grid.iconRow}>
@@ -168,26 +191,8 @@ export default function Gear() {
                 </Box>
             </Box>
             
-            <Box sx={{
-                display: 'flex',
-                textAlign: 'center',
-                justifyContent: 'center',
-                userSelect: 'none',
-                MozUserSelect: 'none',
-                KhtmlUserSelect: 'none',
-                WebkitUserSelect: 'none',
-                margin: '15px',
-            }}>
-                <Box sx={{
-                    padding: '15px',
-                    borderRadius: '5px',
-                    background: 'blue',
-                    color: 'white',
-                    width: ['90vw', '80vw', '35vw'],
-                    ':hover': {
-                        cursor: 'pointer',
-                    }
-                }} onClick={() => calculate(subStats)}>
+            <Box sx={gearStyle.calculate}>
+                <Box sx={gearStyle.calculate.button} onClick={() => calculate(subStats)}>
                     Compute
                 </Box>
             </Box>

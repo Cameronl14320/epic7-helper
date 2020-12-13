@@ -16,13 +16,19 @@ const subStyle = {
         selections: {
             display: "inline-grid",
             marginTop: '10px',
+            overflow: 'hidden',
+            height: 'auto',
             hidden: {
+                transition: 'max-height .2s, visibility .2s, opacity .2s',
                 visibility: "hidden",
-                height: '0',
+                maxHeight: '0',
+                opacity: '0',
             },
             revealed: {
+                transition: 'max-height .2s, visibility .5s, opacity .5s',
                 visibility: "visible",
-                height: 'auto',
+                maxHeight: '500px',
+                opacity: '1',
             },
         },
         reveal: {
@@ -207,20 +213,23 @@ export default class SubContainer extends Component {
                     {currentStats}
                 </Box>
                 <Box>
-                    <Box id="subContainer-selections" className="selections" style={{visibility: "hidden", height: '0'}} sx={subStyle.subContainer.selections}>
+                    <Box id="subContainer-selections" className="selections" style={{visibility: "hidden", maxHeight: '0', height: 'auto', opacity: '0',}} sx={subStyle.subContainer.selections}>
                         {select}
                     </Box>
 
                     <Box className="revealSelections" sx={subStyle.subContainer.reveal} onClick={() => {
                         var reveal = document.getElementById("subContainer-selections");
                         if (reveal.style.visibility == "visible") {
+                            reveal.style.transition = subStyle.subContainer.selections.hidden.transition;
                             reveal.style.visibility = subStyle.subContainer.selections.hidden.visibility;
-                            reveal.style.height = subStyle.subContainer.selections.hidden.height;
+                            reveal.style.maxHeight = subStyle.subContainer.selections.hidden.maxHeight;
+                            reveal.style.opacity = subStyle.subContainer.selections.hidden.opacity;
 
                         } else {
+                            reveal.style.transition = subStyle.subContainer.selections.revealed.transition;
                             reveal.style.visibility = subStyle.subContainer.selections.revealed.visibility;
-                            reveal.style.height = subStyle.subContainer.selections.revealed.height;
-
+                            reveal.style.maxHeight = subStyle.subContainer.selections.revealed.maxHeight;
+                            reveal.style.opacity = subStyle.subContainer.selections.revealed.opacity;
                         }
                     }}>
                     </Box>

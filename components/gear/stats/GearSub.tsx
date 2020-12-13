@@ -11,6 +11,7 @@ const subStyle = {
         display: "block",
         marginLeft: '10px',
         marginRight: '10px',
+        transition: 'display .2s, visibility .2s, height .2s, opacity .2s'
     },
     subGrid: {
         display: 'grid',

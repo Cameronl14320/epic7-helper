@@ -12,6 +12,9 @@ const subStyle = {
         WebkitUserSelect: 'none',
         minWidth: '300px',
     },
+    currentDisplay: {
+        transition: 'display .2s, visibility .2s, height .2s, opacity .2s'
+    },
     subContainer: {
         selections: {
             display: "inline-grid",
@@ -209,7 +212,9 @@ export default class SubContainer extends Component {
 
         return (
             <Box sx={subStyle.wrapper}>
-                <Box>
+                <Box sx={{
+                    transition: 'height .2s',
+                }}>
                     {currentStats}
                 </Box>
                 <Box>

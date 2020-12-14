@@ -126,10 +126,6 @@ function changeRarity() {
     // Select rarity
 }
 
-function getMax(substat : statObject, tier : number, enhancements : number, value : number, rarity : number) {
-
-}
-
 function calculate(subStats : SubContainer) {
     let values : number[] = subStats.getValues();
     let tier = 0;
@@ -151,6 +147,29 @@ function calculate(subStats : SubContainer) {
             return;
         }
     }
+
+    // Array of enhancements, stores number of enhancements per substat, initialised with 0s
+    let enhanced : number[] = new Array(stats.length).fill(0);
+    let foundEnhancements = 0;
+    while(foundEnhancements != enhancements) {
+        for (let i = 0; i < values.length; i++) {
+            let currentValue = values[i];
+            let maxRoll = stats[i].max[tier];
+            var simulateEnhance = maxRoll;
+            while (simulateEnhance < currentValue) {
+                foundEnhancements++;
+                simulateEnhance += maxRoll;
+                enhanced[i] = enhanced[i]++;
+            }
+        }
+
+        if (foundEnhancements > enhancements) {
+            // When we search for enhancements, we go by max possible rolls - this finds the minimum enhancements necessary to reach inputted parameters
+            // If the number we find > number there is, impossible case, inaccurate number of enhancements
+            return;
+        }
+    }
+
 
     // Identify which stats have been enhanced
     // Need to account for scenarios where more than possible values have been applied

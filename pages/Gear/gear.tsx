@@ -126,13 +126,31 @@ function changeRarity() {
     // Select rarity
 }
 
-function getMax(substat : statObject, tier : number, enhancements : number, value : number) {
+function getMax(substat : statObject, tier : number, enhancements : number, value : number, rarity : number) {
+
 }
 
 function calculate(subStats : SubContainer) {
     let values : number[] = subStats.getValues();
+    let tier = 0;
     let stats : statObject[] = subStats.getStats();
     let enhancements : number = subStats.getEnhancement();
+
+    if (stats.length > rarity && enhancements == 0) {
+        // No enhancements, yet there are more substats then there should be
+        return;
+    }
+
+    for (let i = 0; i < values.length; i++) {
+        if (values[i] > (stats[i].max[tier] + (stats[i].max[tier] * enhancements))) {
+            // Value is greater than possible max, where max is base roll + (enhance roll * number of enhancements)
+            return;
+        }
+        if (values[i] < (stats[i].min[tier])) {
+            // Value is less than the possible minimum, where min is defined uniquely for each sub stat
+            return;
+        }
+    }
 
     // Identify which stats have been enhanced
     // Need to account for scenarios where more than possible values have been applied

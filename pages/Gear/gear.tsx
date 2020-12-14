@@ -9,10 +9,6 @@ import colors from '../../styles/colors'
 import statObject from '../../components/gear/game/statObject'
 
 var rarity = 3;
-var firstStat = 0;
-var secondStat = 1;
-var thirdStat = 2;
-var fourthStat = 3;
 
 const gearStyle = {
     wrapper: {
@@ -195,24 +191,24 @@ export default function Gear() {
                 <Box sx={gearStyle.grid}>
 
                     <Box sx={gearStyle.grid.iconRow}>
-                        <Box className="gearRarity" style={gearStyle.grid.iconRow.rarityContainer}>
+                        <Box id="gear-rarity" className="gearRarity" style={gearStyle.grid.iconRow.rarityContainer}>
                             <Box sx={{
                                 display: 'flex',
                             }}>
-                                <Box className="rarityIcon" sx={gearStyle.grid.iconRow.rarityContainer.rarityIcon} onClick={() => changeRarity()}>
+                                <Box id="gear-rarity-icon" className="rarityIcon" sx={gearStyle.grid.iconRow.rarityContainer.rarityIcon} onClick={() => changeRarity()}>
                                     <Box sx={{
                                         color: 'black',
                                     }}>
                                         grid
                                     </Box>
                                 </Box>
-                                <Box className="enhanceLevel" sx={gearStyle.grid.iconRow.rarityContainer.enhanceIcon}>
+                                <Box id="gear-rarity-level" className="enhanceLevel" sx={gearStyle.grid.iconRow.rarityContainer.enhanceIcon}>
                                 </Box>
                             </Box>
                         </Box>
                     </Box>
 
-                    <Box style={gearStyle.grid.sliderRow}>
+                    <Box id="gear-slider" style={gearStyle.grid.sliderRow}>
                         <Box>
                         <Slider 
                             min={0} max={15} step={3} dots 
@@ -225,13 +221,13 @@ export default function Gear() {
                         </Box>
                     </Box>
 
-                    <Box sx={gearStyle.grid.substatRow}>
+                    <Box id="gear-substats" sx={gearStyle.grid.substatRow}>
                         {subStats.render()}
                     </Box>
                 </Box>
             </Box>
             
-            <Box sx={gearStyle.calculate}>
+            <Box id="gear-calculate" sx={gearStyle.calculate}>
                 <Box sx={gearStyle.calculate.button} onClick={() => calculate(subStats)}>
                     Compute
                 </Box>

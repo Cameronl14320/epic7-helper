@@ -126,6 +126,9 @@ function changeRarity() {
     // Select rarity
 }
 
+function getMax(substat : statObject, tier : number, enhancements : number, value : number) {
+}
+
 function calculate(subStats : SubContainer) {
     let values : number[] = subStats.getValues();
     let stats : statObject[] = subStats.getStats();

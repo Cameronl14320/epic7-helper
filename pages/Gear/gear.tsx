@@ -124,6 +124,7 @@ function changeRarity() {
 
 function calculate(subStats : SubContainer) {
     let values : number[] = subStats.getValues();
+    let tempValues : number[] = subStats.getValues();
     let tier = 0;
     let stats : statObject[] = subStats.getStats();
     let enhancements : number = subStats.getEnhancement();
@@ -155,7 +156,7 @@ function calculate(subStats : SubContainer) {
             while (simulateEnhance < currentValue) {
                 foundEnhancements++;
                 simulateEnhance += maxRoll;
-                enhanced[i] = enhanced[i]++;
+                enhanced[i]++;
             }
         }
 
@@ -163,6 +164,22 @@ function calculate(subStats : SubContainer) {
             // When we search for enhancements, we go by max possible rolls - this finds the minimum enhancements necessary to reach inputted parameters
             // If the number we find > number there is, impossible case, inaccurate number of enhancements
             return;
+        } else if (foundEnhancements < enhancements) {
+            // Less than enhancements, found enhancement is actually comprised of multiple enhancements
+            let max = 0;
+            let maxValue = 0;
+            for (let i = 0; i < tempValues.length; i++) {
+                if (tempValues[i] > maxValue) {
+                    maxValue = tempValues[i];
+                    tempValues[i] = tempValues[i] - stats[i].max[tier]; // Update value so that it doesn't repeatedly scan the same max
+                    enhanced[i]++;
+                    max = i;
+
+                    if (foundEnhancements == enhancements) {
+                        break;
+                    }
+                }
+            }
         }
     }
 

@@ -124,7 +124,6 @@ function changeRarity() {
 
 function calculate(subStats : SubContainer) {
     let values : number[] = subStats.getValues();
-    let tempValues : number[] = subStats.getValues();
     let tier = 0;
     let stats : statObject[] = subStats.getStats();
     let enhancements : number = subStats.getEnhancement();
@@ -183,11 +182,11 @@ function calculate(subStats : SubContainer) {
             // Less than enhancements, found enhancement is actually comprised of multiple enhancements
             let max = 0;
             let maxValue = 0;
-            for (let i = 0; i < tempValues.length; i++) {
+            for (let i = 0; i < values.length; i++) {
                 console.log(foundEnhancements);
-                if (tempValues[i] > maxValue) {
-                    maxValue = tempValues[i];
-                    tempValues[i] = tempValues[i] - stats[i].max[tier]; // Update value so that it doesn't repeatedly scan the same max
+                if (values[i] > maxValue) {
+                    maxValue = values[i];
+                    values[i] = values[i] - stats[i].max[tier]; // Update value so that it doesn't repeatedly scan the same max
                     foundEnhancements++;
                     enhanced[i]++;
                     max = i;
@@ -204,6 +203,13 @@ function calculate(subStats : SubContainer) {
     for (let i = 0; i < values.length; i++) {
         let maxRoll = stats[i].max[tier];
         maxValues[i] = maxRoll + (maxRoll * enhanced[i]);
+    }
+
+    if (values.length > rarity) {
+        let extraSubs = values.length - rarity;
+        for (let i = values.length - 1; i > (values.length - extraSubs - 1); i--) {
+            maxValues[i]--;
+        }
     }
 
     console.log("Enhancements found: " + enhanced)

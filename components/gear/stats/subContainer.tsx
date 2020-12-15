@@ -195,8 +195,7 @@ export default class SubContainer extends Component {
      * @param newEnhance New number of enhancements
      */
     updateEnhance(newEnhance : number) {
-        this.enhancements = newEnhance;
-        console.log(this.enhancements);
+        this.enhancements = newEnhance/3;
     }
 
     render() {

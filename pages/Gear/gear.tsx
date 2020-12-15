@@ -129,18 +129,21 @@ function calculate(subStats : SubContainer) {
     let stats : statObject[] = subStats.getStats();
     let enhancements : number = subStats.getEnhancement();
 
-    if (stats.length > rarity && enhancements == 0) {
+    if (stats.length > rarity && enhancements <= (values.length - rarity)) {
         // No enhancements, yet there are more substats then there should be
+        console.log("Number of substats > possible amount of substats because insufficent enhancements")
         return;
     }
 
     for (let i = 0; i < values.length; i++) {
         if (values[i] > (stats[i].max[tier] + (stats[i].max[tier] * enhancements))) {
             // Value is greater than possible max, where max is base roll + (enhance roll * number of enhancements)
+            console.log("There is a stat > possible maximum")
             return;
         }
         if (values[i] < (stats[i].min[tier])) {
             // Value is less than the possible minimum, where min is defined uniquely for each sub stat
+            console.log("There is a stat < possible minimum")
             return;
         }
     }
@@ -163,19 +166,22 @@ function calculate(subStats : SubContainer) {
         if (foundEnhancements > enhancements) {
             // When we search for enhancements, we go by max possible rolls - this finds the minimum enhancements necessary to reach inputted parameters
             // If the number we find > number there is, impossible case, inaccurate number of enhancements
+            console.log("Incorrect parameters (" + foundEnhancements + " > " + enhancements + ")")
             return;
         } else if (foundEnhancements < enhancements) {
             // Less than enhancements, found enhancement is actually comprised of multiple enhancements
             let max = 0;
             let maxValue = 0;
             for (let i = 0; i < tempValues.length; i++) {
+                console.log(foundEnhancements);
                 if (tempValues[i] > maxValue) {
                     maxValue = tempValues[i];
                     tempValues[i] = tempValues[i] - stats[i].max[tier]; // Update value so that it doesn't repeatedly scan the same max
+                    foundEnhancements++;
                     enhanced[i]++;
                     max = i;
 
-                    if (foundEnhancements == enhancements) {
+                    if (foundEnhancements >= enhancements) {
                         break;
                     }
                 }
@@ -183,9 +189,15 @@ function calculate(subStats : SubContainer) {
         }
     }
 
+    let maxValues : number[] = [values.length];
+    for (let i = 0; i < values.length; i++) {
+        let maxRoll = stats[i].max[tier];
+        maxValues[i] = maxRoll + (maxRoll * enhanced[i]);
+    }
 
-    // Identify which stats have been enhanced
-    // Need to account for scenarios where more than possible values have been applied
+    console.log("Enhancements found: " + enhanced)
+    console.log("Max Values: " + maxValues)
+    return maxValues;
 }
 
 function changeStat(currentStat : number) {

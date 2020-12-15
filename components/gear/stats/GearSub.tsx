@@ -92,7 +92,7 @@ export default class GearSub extends Component<{}, {id : string, stat : statObje
                         <Input id={this.id + "-GearSub-Value-Input"} placeholder='Value' type='number' sx={subStyle.subGrid.value.input}
                         onChange={(e) => {
                                 e.target.value = Math.max(0, parseInt(e.target.value)).toString().slice(0, 2); // only allow two characters
-                                this.value = e.target.valueAsNumber; console.log(this.value); // Update current value
+                                this.value = e.target.valueAsNumber; // Update current value
                             }} >
                         </Input>
                     </Box>

@@ -191,7 +191,7 @@ function calculate(subStats : SubContainer) {
                     enhanced[i]++;
                     max = i;
 
-                    if (foundEnhancements >= enhancements) {
+                    if (foundEnhancements >= enhancements) { // Found all enhancements, time to stop
                         break;
                     }
                 }
@@ -199,12 +199,14 @@ function calculate(subStats : SubContainer) {
         }
     }
 
+    // Create an array of all the max values determined by max roll and number of enhancements
     let maxValues : number[] = [values.length];
     for (let i = 0; i < values.length; i++) {
         let maxRoll = stats[i].max[tier];
         maxValues[i] = maxRoll + (maxRoll * enhanced[i]);
     }
 
+    // Removes the initiall maxRoll in the above for loop, as the extra sub stat(s) is not a base roll.
     if (values.length > rarity) {
         let extraSubs = values.length - rarity;
         for (let i = values.length - 1; i > (values.length - extraSubs - 1); i--) {

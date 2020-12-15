@@ -151,6 +151,17 @@ function calculate(subStats : SubContainer) {
     // Array of enhancements, stores number of enhancements per substat, initialised with 0s
     let enhanced : number[] = new Array(stats.length).fill(0);
     let foundEnhancements = 0;
+
+    // If rarity isn't equal with number of sub stats, it means enhancements have rolled into new sub stats
+    // Must add an extra enhancement due to this
+    if (values.length > rarity) {
+        let extraSubs = values.length - rarity;
+        for (let i = values.length - 1; i > (values.length - extraSubs - 1); i--) {
+            enhanced[i]++;
+            foundEnhancements++;
+        }
+    }
+
     while(foundEnhancements != enhancements) {
         for (let i = 0; i < values.length; i++) {
             let currentValue = values[i];

@@ -208,7 +208,8 @@ function calculate(subStats : SubContainer) {
     if (values.length > rarity) {
         let extraSubs = values.length - rarity;
         for (let i = values.length - 1; i > (values.length - extraSubs - 1); i--) {
-            maxValues[i]--;
+            let maxRoll = stats[i].max[tier];
+            maxValues[i] = maxValues[i] - (maxRoll);
         }
     }
 

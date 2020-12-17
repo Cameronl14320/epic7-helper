@@ -9,6 +9,7 @@ import colors from '../../styles/colors'
 import statObject from '../../components/gear/game/statObject'
 
 var rarity = 3;
+var tier = 3;
 
 const gearStyle = {
     wrapper: {
@@ -124,7 +125,6 @@ function changeRarity() {
 
 function calculate(subStats : SubContainer) {
     let values : number[] = subStats.getValues();
-    let tier = 3;
     let stats : statObject[] = subStats.getStats();
     let enhancements : number = subStats.getEnhancement();
 

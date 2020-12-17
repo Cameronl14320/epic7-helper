@@ -7,6 +7,7 @@ import { subArray } from '../../components/gear/game/subArray'
 import SubContainer from '../../components/gear/stats/SubContainer'
 import colors from '../../styles/colors'
 import statObject from '../../components/gear/game/statObject'
+import { Label } from '@rebass/forms'
 
 var rarity = 4;
 var tier = 3;
@@ -280,6 +281,10 @@ export default function Gear() {
 
                     <Box id="gear-slider" style={gearStyle.grid.sliderRow}>
                         <Box>
+                        <Label sx={{
+                            marginY: '5px',
+                            fontSize: '1.5em',
+                        }}>Enhancement Level</Label>
                         <Slider 
                             min={0} max={15} step={3} dots 
                             handleStyle={gearStyle.grid.sliderRow.slider.handleStyle}

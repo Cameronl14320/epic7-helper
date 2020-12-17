@@ -124,13 +124,14 @@ function changeRarity() {
 
 function calculate(subStats : SubContainer) {
     let values : number[] = subStats.getValues();
-    let tier = 0;
+    let tier = 3;
     let stats : statObject[] = subStats.getStats();
     let enhancements : number = subStats.getEnhancement();
 
     if (stats.length > rarity && enhancements <= (values.length - rarity)) {
         // No enhancements, yet there are more substats then there should be
         console.log("Number of substats > possible amount of substats because insufficent enhancements")
+        console.log(stats.length + " > " + rarity + " && " + enhancements + " <= " + (values.length - rarity))
         return;
     }
 

@@ -56,6 +56,20 @@ function subStats(stats : number[]) : GearSub[] {
     return subStats;
 }
 
+/*
+export interface SubContainer {
+    rarity: number
+    enhancements: number  
+}
+
+const subContainer: SubContainer = {
+    rarity: 1,
+    enhancements: 5,
+    stats: [1,2,3]
+}
+*/
+
+
 export default class SubContainer extends Component {
 
     private rarity : number = 4;

@@ -57,6 +57,8 @@ const gearStyle = {
                     background: 'black',
                     position: 'absolute',
                     marginLeft: ['4em', '6em', '8em'],
+                    color: 'white',
+                    textAlign: 'center',
                 },
             },
 
@@ -253,6 +255,7 @@ export default function Gear() {
                                     </Box>
                                 </Box>
                                 <Box id="gear-rarity-level" className="enhanceLevel" sx={gearStyle.grid.iconRow.rarityContainer.enhanceIcon}>
+                                    0
                                 </Box>
                             </Box>
                         </Box>
@@ -266,7 +269,10 @@ export default function Gear() {
                             railStyle={gearStyle.grid.sliderRow.slider.railStyle}
                             dotStyle={gearStyle.grid.sliderRow.slider.dotStyle} 
                             activeDotStyle={gearStyle.grid.sliderRow.slider.activeDotStyle}
-                            onChange={(e) => {subStats.updateEnhance(e.valueOf())}}
+                            onChange={(e) => {
+                                subStats.updateEnhance(e.valueOf())
+                                document.getElementById("gear-rarity-level").textContent = e.valueOf().toString();
+                            }}
                         />
                         </Box>
                     </Box>

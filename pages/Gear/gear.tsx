@@ -8,8 +8,10 @@ import SubContainer from '../../components/gear/stats/SubContainer'
 import colors from '../../styles/colors'
 import statObject from '../../components/gear/game/statObject'
 
-var rarity = 3;
+var rarity = 4;
 var tier = 3;
+
+var rarityColors : string[] = ["gray", "green", "blue", "purple", "pink"];
 
 const gearStyle = {
     wrapper: {
@@ -44,8 +46,13 @@ const gearStyle = {
                 rarityIcon: {
                     width: ['6em', '9em', '12em'],
                     height: ['6em', '9em', '12em'],
-                    background: colors.secondary,
+                    borderRadius: '5px',
+                    background: rarityColors[rarity],
                     padding: 0,
+
+                    ':hover': {
+                        cursor: "pointer",
+                    }
                 },
                 rarityChanger: {
                     width: ['3em', '4em', '5em'],
@@ -53,10 +60,12 @@ const gearStyle = {
                 },
                 enhanceIcon: {
                     width: ['2em', '3em', '4em'],
-                    height: ['2em', '3em', '4em'],
+                    height: ['1em', '1.5em', '2em'],
                     background: 'black',
                     position: 'absolute',
                     marginLeft: ['4em', '6em', '8em'],
+                    borderRadius: '5px',
+                    marginTop: '-5px',
                     color: 'white',
                     textAlign: 'center',
                 },
@@ -123,6 +132,14 @@ const gearStyle = {
 
 function changeRarity() {
     // Select rarity
+    let tempRarity = rarity;
+    if (tempRarity + 1 >= rarityColors.length) {
+        tempRarity = 0;
+    } else {
+        tempRarity = tempRarity + 1;
+    }
+    rarity = tempRarity;
+    document.getElementById("gear-rarity-icon").style.background = rarityColors[rarity];
 }
 
 function calculate(subStats : SubContainer) {

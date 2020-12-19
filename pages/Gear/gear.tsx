@@ -3,10 +3,10 @@ import { Box, Text, Button, SxStyleProp } from 'rebass'
 import theme from '../../styles/theme'
 import Slider from 'rc-slider'
 import 'rc-slider/assets/index.css'
-import { subArray } from '../../components/gear/game/subArray'
+import { subArray } from '../../objects/subArray'
 import SubContainer from '../../components/gear/stats/SubContainer'
 import colors from '../../styles/colors'
-import statObject from '../../components/gear/game/statObject'
+import statObject from '../../objects/GearStat'
 import { Label } from '@rebass/forms'
 
 var rarity = 4;

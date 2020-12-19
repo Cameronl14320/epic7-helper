@@ -1,8 +1,8 @@
 import { Box } from 'rebass'
 import GearSub from './GearSub'
-import { subArray } from '../game/subArray'
+import { subArray } from '../../../objects/subArray'
 import { Component } from 'react';
-import statObject from '../game/statObject';
+import statObject from '../../../objects/GearStat';
 
 const subStyle = {
     wrapper: {

@@ -1,6 +1,6 @@
 import { SxStyleProp } from 'rebass'
-import substats from './substats.json'
-import statObject from './statObject'
+import substats from '../data/substats.json'
+import statObject from './GearStat'
 
 export function createArray():Array<statObject> {
     const array : Array<statObject> = new Array<statObject>();

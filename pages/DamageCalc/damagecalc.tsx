@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, Text } from 'rebass'
-import {subArray, createArray} from '../../components/gear/game/subArray'
+import {subArray, createArray} from '../../objects/subArray'
 
 export default function DamageCalc() {
     return (

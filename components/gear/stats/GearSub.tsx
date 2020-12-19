@@ -1,7 +1,7 @@
 import { Component } from "react";
 import { Box, SxStyleProp } from 'rebass'
 import { Label, Input } from '@rebass/forms'
-import statObject from "../game/statObject";
+import statObject from "../../../objects/GearStat";
 
 const subStyle = {
     wrapper: {

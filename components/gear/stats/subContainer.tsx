@@ -1,8 +1,8 @@
 import { Box } from 'rebass'
 import GearSub from './GearSub'
 import { subArray } from '../../../objects/subArray'
-import { Component } from 'react';
-import statObject from '../../../objects/GearStat';
+import createSelect from './gearSelect'
+import SubObject from '../../../objects/SubObject'
 
 const subStyle = {
     wrapper: {
@@ -56,21 +56,8 @@ function subStats(stats : number[]) : GearSub[] {
     return subStats;
 }
 
-/*
-export interface SubContainer {
-    rarity: number
-    enhancements: number  
-}
-
-const subContainer: SubContainer = {
-    rarity: 1,
-    enhancements: 5,
-    stats: [1,2,3]
-}
-*/
-
-
-export default subContainer() {
+export default function subContainer(props) {
+    var data : SubObject = props.SubObject;
     var currentStats = [];
     for (let i = 0; i < this.selectedStats.length; i++) {
         currentStats.push(
@@ -79,8 +66,8 @@ export default subContainer() {
             </Box>
             );
     }
-    
-    var select = this.createSelect();
+
+    var select = createSelect();
         return (
             <Box sx={subStyle.wrapper}>
                 <Box sx={{

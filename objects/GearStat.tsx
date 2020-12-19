@@ -7,7 +7,5 @@ export default class GearStat {
         this.name = name;
         this.min = min;
         this.max = max;
-
-        console.log(this.name + " : " + this.min[0] + " : " + this.max[0])
     }
 }

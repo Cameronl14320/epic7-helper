@@ -1,6 +1,6 @@
 
-export default class SubObject {
-    rarity : number = 4;
-    enhancements : number = 0;
-    selectedStats : number[] = [];
+export default interface SubInterface {
+    rarity : number;
+    enhancements : number;
+    selectedStats : number[];
 }

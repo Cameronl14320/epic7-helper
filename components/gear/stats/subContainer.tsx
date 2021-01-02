@@ -56,18 +56,26 @@ function subStats(stats : number[]) : GearSub[] {
     return subStats;
 }
 
-export default function subContainer(props) {
-    var data : SubObject = props.SubObject;
+export default function subContainer(props : {data: SubObject}) {
+    var data : SubObject = props.data;
     var currentStats = [];
-    for (let i = 0; i < this.selectedStats.length; i++) {
+    var subStatDisplay : GearSub[] = subStats(data.selectedStats);
+    for (let i = 0; i < data.selectedStats.length; i++) {
         currentStats.push(
             <Box key={"subContainer-substat-" + i} id={"subContainer-substat-" + i}>
-                {this.subStatDisplay[i].render()}
+                {subStatDisplay[i].render()}
             </Box>
             );
     }
 
-    var select = createSelect();
+    function returnValues() {
+        var values : number[] = []
+        for (let i = 0; i < currentStats.length; i++) {
+            //values.push(currentStats[i].)
+        }
+    }
+
+    var select = createSelect({data});
         return (
             <Box sx={subStyle.wrapper}>
                 <Box sx={{

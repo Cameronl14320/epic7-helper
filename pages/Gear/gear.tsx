@@ -6,12 +6,15 @@ import 'rc-slider/assets/index.css'
 import { subArray } from '../../objects/subArray'
 import SubContainer from '../../components/gear/stats/SubContainer'
 import colors from '../../styles/colors'
-import statObject from '../../objects/GearStat'
+import GearStat from '../../objects/GearStat'
 import { Label } from '@rebass/forms'
+import SubObject from '../../objects/SubObject'
 
-var rarity = 4;
-var tier = 3;
-
+let rarity = 4;
+let tier = 3;
+let enhancements = 0;
+let selectedStats = [0, 1, 2, 3];
+const data : SubObject = new SubObject(rarity, enhancements, selectedStats, tier);
 var rarityColors : string[] = ["gray", "green", "blue", "purple", "pink"];
 
 const gearStyle = {
@@ -133,35 +136,35 @@ const gearStyle = {
 
 function changeRarity() {
     // Select rarity
-    let tempRarity = rarity;
+    let tempRarity = data.rarity;
     if (tempRarity + 1 >= rarityColors.length) {
         tempRarity = 0;
     } else {
         tempRarity = tempRarity + 1;
     }
-    rarity = tempRarity;
-    document.getElementById("gear-rarity-icon").style.background = rarityColors[rarity];
+    data.rarity = tempRarity;
+    document.getElementById("gear-rarity-icon").style.background = rarityColors[data.rarity];
 }
 
-function calculate(subStats : SubContainer) {
-    let values : number[] = subStats.getValues();
-    let stats : statObject[] = subStats.getStats();
-    let enhancements : number = subStats.getEnhancement();
+function calculate(data : SubObject) {
+    let values : number[] = data.getValues();
+    let stats : GearStat[] = data.getStats();
+    let enhancements : number = data.enhancements;
 
-    if (stats.length > rarity && enhancements <= (values.length - rarity)) {
+    if (stats.length > data.rarity && enhancements <= (values.length - data.rarity)) {
         // No enhancements, yet there are more substats then there should be
         console.log("Number of substats > possible amount of substats because insufficent enhancements")
-        console.log(stats.length + " > " + rarity + " && " + enhancements + " <= " + (values.length - rarity))
+        console.log(stats.length + " > " + data.rarity + " && " + enhancements + " <= " + (values.length - data.rarity))
         return;
     }
 
     for (let i = 0; i < values.length; i++) {
-        if (values[i] > (stats[i].max[tier] + (stats[i].max[tier] * enhancements))) {
+        if (values[i] > (stats[i].max[data.tier] + (stats[i].max[data.tier] * enhancements))) {
             // Value is greater than possible max, where max is base roll + (enhance roll * number of enhancements)
             console.log("There is a stat > possible maximum")
             return;
         }
-        if (values[i] < (stats[i].min[tier])) {
+        if (values[i] < (stats[i].min[data.tier])) {
             // Value is less than the possible minimum, where min is defined uniquely for each sub stat
             console.log("There is a stat < possible minimum")
             return;
@@ -174,8 +177,8 @@ function calculate(subStats : SubContainer) {
 
     // If rarity isn't equal with number of sub stats, it means enhancements have rolled into new sub stats
     // Must add an extra enhancement due to this
-    if (values.length > rarity) {
-        let extraSubs = values.length - rarity;
+    if (values.length > data.rarity) {
+        let extraSubs = values.length - data.rarity;
         for (let i = values.length - 1; i > (values.length - extraSubs - 1); i--) {
             enhanced[i]++;
             foundEnhancements++;
@@ -185,7 +188,7 @@ function calculate(subStats : SubContainer) {
     while(foundEnhancements != enhancements) {
         for (let i = 0; i < values.length; i++) {
             let currentValue = values[i];
-            let maxRoll = stats[i].max[tier];
+            let maxRoll = stats[i].max[data.tier];
             var simulateEnhance = maxRoll;
             while (simulateEnhance < currentValue) {
                 foundEnhancements++;
@@ -207,7 +210,7 @@ function calculate(subStats : SubContainer) {
                 console.log(foundEnhancements);
                 if (values[i] > maxValue) {
                     maxValue = values[i];
-                    values[i] = values[i] - stats[i].max[tier]; // Update value so that it doesn't repeatedly scan the same max
+                    values[i] = values[i] - stats[i].max[data.tier]; // Update value so that it doesn't repeatedly scan the same max
                     foundEnhancements++;
                     enhanced[i]++;
                     max = i;
@@ -223,15 +226,15 @@ function calculate(subStats : SubContainer) {
     // Create an array of all the max values determined by max roll and number of enhancements
     let maxValues : number[] = [values.length];
     for (let i = 0; i < values.length; i++) {
-        let maxRoll = stats[i].max[tier];
+        let maxRoll = stats[i].max[data.tier];
         maxValues[i] = maxRoll + (maxRoll * enhanced[i]);
     }
 
     // Removes the initiall maxRoll in the above for loop, as the extra sub stat(s) is not a base roll.
-    if (values.length > rarity) {
-        let extraSubs = values.length - rarity;
+    if (values.length > data.rarity) {
+        let extraSubs = values.length - data.rarity;
         for (let i = values.length - 1; i > (values.length - extraSubs - 1); i--) {
-            let maxRoll = stats[i].max[tier];
+            let maxRoll = stats[i].max[data.tier];
             maxValues[i] = maxValues[i] - (maxRoll);
         }
     }
@@ -252,8 +255,7 @@ function changeStat(currentStat : number) {
 }
 
 export default function Gear() {
-
-    const subStats = new SubContainer({});
+    const subCon = SubContainer({data});
 
     return (
         <Box sx={gearStyle.wrapper}>
@@ -292,7 +294,7 @@ export default function Gear() {
                             dotStyle={gearStyle.grid.sliderRow.slider.dotStyle} 
                             activeDotStyle={gearStyle.grid.sliderRow.slider.activeDotStyle}
                             onChange={(e) => {
-                                subStats.updateEnhance(e.valueOf())
+                                //subCon.updateEnhance(e.valueOf())
                                 document.getElementById("gear-rarity-level").textContent = e.valueOf().toString();
                             }}
                         />
@@ -300,13 +302,13 @@ export default function Gear() {
                     </Box>
 
                     <Box id="gear-substats" sx={gearStyle.grid.substatRow}>
-                        {subStats.render()}
+                        {subCon}
                     </Box>
                 </Box>
             </Box>
             
             <Box id="gear-calculate" sx={gearStyle.calculate}>
-                <Box sx={gearStyle.calculate.button} onClick={() => calculate(subStats)}>
+                <Box sx={gearStyle.calculate.button} onClick={() => calculate(data)}>
                     Compute
                 </Box>
             </Box>

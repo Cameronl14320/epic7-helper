@@ -33,30 +33,7 @@
 
 
 
-    /**
-     * Refresh all stats in case some are hidden or displayed incorrectly
-     */
-    refreshStats() {
-        // Update stats to match selected stat objects
-        for (let i = 0 ; i < this.selectedStats.length; i++) {
-            this.subStatDisplay[i].changeStat(subArray[this.selectedStats[i]]);
-        }
 
-        // Refresh stats to make sure they're all visible
-        for (let i = 0; i < this.subStatDisplay.length; i++) {
-            this.subStatDisplay[i].toggleDisplay(true);
-        }
-
-        // If max stats not selected, hide hidden ones
-        let selectedLength = this.selectedStats.length;
-        var displayLength = this.subStatDisplay.length;
-        if (selectedLength < displayLength) { // Get difference in length to find out how many are missing
-            let difference = displayLength - selectedLength;
-            for (let j = displayLength - difference; j < displayLength; j++) {
-                this.subStatDisplay[j].toggleDisplay(false);
-            }
-        }
-    }
 
     /**
      * Creates the selection div
